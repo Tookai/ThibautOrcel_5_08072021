@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap");
+    </style>
+
+    <script src="./javascript/index.js" async></script>
+
+    <link rel="stylesheet" href="./style/style.css" />
+
+    <title>Orinourson</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <a href="cart.html"><img id="cartImg" src="../images/cartempty.png" alt="logo : orinoco" class="header__logo" /></a>
+          <a href="index.html"><img src="../images/logo.png" alt="logo : orinoco" class="header__logo" /></a>
+        </div>
+        <h1 class="header__title">Orinourson</h1>
+      </header>
+      <section>
+        <p class="section__txt">Le meilleur site e-commerce pour trouver votre ours en peluche fait à la main et personnalisable.</p>
+      </section>
+
+      <main class="main__oursons" id="products">
+        <template>
+            <div class="main__ourson tedItem" id="">
+                <img src="" alt="" class="main__img tedImage" /> 
+                <div class="main__txt">
+                    <p class="tedName"></p>
+                    <p class="tedPrice"></p> 
+                    <a href="" class="tedRedirect"><button>Personnaliser</button></a> 
+                </div> 
+                <hr /> 
+                <div class="main__description">
+                    <p class="tedDescription"></p> 
+                </div>
+            </div>
+        </template>
+        <!-- 
+            tedItem
+            tedImage
+            tedName
+            tedPrice
+            tedRedirect
+            tedDescription
+         -->
+      </main>
+
+      <footer>
+        <a href="panier.html">Votre Panier</a>
+        <a href="#">Vos Commandes</a>
+        <a href="mailto:orinoco@contact.fr">Nous Contacter</a>
+        <a href="#">Un Hôtel ? Trivago</a>
+      </footer>
+    </div>
+  </body>
+</html>
