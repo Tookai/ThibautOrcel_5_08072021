@@ -57,7 +57,7 @@ showColorOptions = (teddyItem) => {
   });
 };
 
-document.getElementById("addToCart").onclick = (event) => {
+document.getElementById("addToCart").onclick = () => {
   //
   // Create the item Object
   const nom = document.getElementById("name").innerText;
@@ -71,7 +71,6 @@ document.getElementById("addToCart").onclick = (event) => {
 
   // Alert on Click
   alert(`Vous allez ajouter la peluche ${nom} à votre panier.`);
-  console.log(item, "clicked on add to cart");
 
   // Create empty array [] IF it doesnt exist
   const items = (() => {
@@ -89,7 +88,6 @@ document.getElementById("addToCart").onclick = (event) => {
   window.location.reload();
 };
 
-console.log(JSON.parse(localStorage.getItem("cart")), "localstorage");
 
 if (localStorage.length == 0) {
   document.getElementById("cartImg").src = "../images/cartempty.png";
