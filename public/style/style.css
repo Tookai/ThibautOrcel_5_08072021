@@ -1,0 +1,191 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+  }
+  
+body {
+    background-color: darkgray;
+  }
+  
+.container {
+    width: 375px;
+    padding: 0 1rem;
+    margin: 0 auto;
+    background-color: #f3e9f1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+.logo {
+    display: flex;
+  }
+  
+.header__logo {
+    width: 100%;
+    height: auto;
+  }
+  
+h1 {
+    font-family: "Akaya Kanadaka", cursive;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+h2 {
+    font-family: "Akaya Kanadaka", cursive;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+.section__txt {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+  
+.main__oursons {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.main__ourson {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+    background-color: #333333;
+    border-radius: 0.3rem;
+    font-size: 1.2rem;
+    color: #f3e9f1;
+  }
+  
+.main__txt {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    padding-top: 1rem;
+    align-items: center;
+  }
+  
+.main__txt button {
+    padding: 0.5rem;
+    background-color: #f3e9f1;
+    border: none;
+    outline: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+  }
+  
+.main__description p {
+    text-align: justify;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  
+.clearBasketBtn {
+    width: 50%;
+    margin: 1rem auto;
+    padding: 1rem;
+    font-size: 1.2rem;
+    background-color: rgba(255, 0, 0, 0.1);
+    border: solid 2px red;
+    border-radius: 0.3rem;
+    font-weight: bold;
+    color: red;
+  }
+  
+.main__form {
+    text-align: center;
+  }
+  
+.main__form form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: fit-content;
+  }
+  
+.main__form select {
+    padding: 0.3rem 1rem;
+    margin: 1rem 0;
+  }
+  
+.formBtn {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: #f3e9f1;
+    background-color: #2a38b1;
+    border-radius: 0.3rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+.command {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+.command p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+.command button {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  
+.command input {
+    padding: 0.3rem;
+  }
+  
+fieldset {
+    margin-bottom: 1rem;
+  }
+  
+legend {
+    padding: 0 0.5rem;
+  }
+  
+.form__sexe {
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+  }
+  
+.form__infos {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+.form__infos input {
+    margin-bottom: 0.7rem;
+  }
+  
+.main__ourson .suppr {
+    border: 2px solid red;
+    color: red;
+  }
+  
+footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 3px solid #333333;
+  }
+  
+footer a {
+    padding: 0.3rem;
+    text-decoration: none;
+    color: #333333;
+  }
+  
