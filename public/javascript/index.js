@@ -36,3 +36,9 @@ showTeddiesData = (teddiesData) => {
     document.getElementById("products").appendChild(productContainer);
   });
 };
+
+if (localStorage.length == 0) {
+  document.getElementById("cartImg").src = "../images/cartempty.png";
+} else {
+  document.getElementById("cartImg").src = "../images/cartfull.png";
+}

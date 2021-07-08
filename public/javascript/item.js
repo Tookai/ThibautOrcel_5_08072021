@@ -90,3 +90,9 @@ document.getElementById("addToCart").onclick = (event) => {
 };
 
 console.log(JSON.parse(localStorage.getItem("cart")), "localstorage");
+
+if (localStorage.length == 0) {
+  document.getElementById("cartImg").src = "../images/cartempty.png";
+} else {
+  document.getElementById("cartImg").src = "../images/cartfull.png";
+}
