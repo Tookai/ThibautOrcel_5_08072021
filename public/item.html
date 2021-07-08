@@ -32,13 +32,12 @@
       </section>
 
       <main class="main__oursons" id="products">
-        <template>
+        <template id="single-item">
           <div class="main__ourson tedItem" id="">
             <img src="" alt="" class="main__img tedImage" />
             <div class="main__txt">
               <p class="tedName"></p>
               <p class="tedPrice"></p>
-              <a href="" class="tedRedirect"><button>Personnaliser</button></a>
             </div>
             <hr />
             <div class="main__description">
@@ -53,7 +52,11 @@
       <div class="main__form">
         <p>Choisissez votre couleur préférée :</p>
         <form action="pickColor">
-          <select name="couleur" id="colors"></select>
+          <select name="couleur" id="colors">
+            <template id="color-template">
+              <option class="color-options" value=""></option>
+            </template>
+          </select>
         </form>
         <a><button id="addToCart" class="formBtn">Ajouter Au Panier</button></a>
       </div>
