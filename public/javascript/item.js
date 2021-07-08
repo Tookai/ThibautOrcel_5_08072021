@@ -10,10 +10,9 @@ const getTeddy = () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       showTeddyData(data);
       updateTitle(data);
-      colorOptions(data);
+      showColorOptions(data);
     });
   /*     .catch((error) => {
       alert("La connexion n'a pas pu se faire.");
@@ -42,7 +41,7 @@ updateTitle = (teddyItem) => {
   document.title = `Orinourson - ${teddyItem.name}`;
 };
 
-colorOptions = (teddyItem) => {
+showColorOptions = (teddyItem) => {
   teddyItem.colors.map((color) => {
     //
     // get & clone template
@@ -57,3 +56,37 @@ colorOptions = (teddyItem) => {
     document.getElementById("colors").appendChild(optionsContainer);
   });
 };
+
+document.getElementById("addToCart").onclick = (event) => {
+  //
+  // Create the item Object
+  const nom = document.getElementById("name").innerText;
+  const prix = document.getElementById("price").innerText;
+  const img = document.getElementById("image").src;
+  const item = {
+    nom,
+    prix,
+    img,
+  };
+
+  // Alert on Click
+  alert(`Vous allez ajouter la peluche ${nom} à votre panier.`);
+  console.log(item, "clicked on add to cart");
+
+  // Create empty array [] IF it doesnt exist
+  const items = (() => {
+    const fieldValue = localStorage.getItem("cart");
+    return fieldValue === null ? [] : JSON.parse(fieldValue);
+  })();
+
+  // Add item object to the Items array
+  items.push(item);
+
+  // Add Items array of objects to the localStorage as a string
+  localStorage.setItem("cart", JSON.stringify(items));
+
+  // Reload the page
+  window.location.reload();
+};
+
+console.log(JSON.parse(localStorage.getItem("cart")), "localstorage");
