@@ -44,11 +44,91 @@ document.getElementById("clear").onclick = () => {
   }
 };
 
+const form = document.getElementById("clientInfos");
+
 window.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("clientInfos");
+  //
+  // Watch Validity of contact infos
+  let firstName = form.querySelector("input[id=firstName]");
+  let lastName = form.querySelector("input[id=lastName]");
+  let adress = form.querySelector("input[id=adress]");
+  let city = form.querySelector("input[id=city]");
+  let email = form.querySelector("input[id=email]");
+  //
+  //
+  firstName.addEventListener("input", validate);
+  lastName.addEventListener("input", validate);
+  adress.addEventListener("input", validate);
+  city.addEventListener("input", validate);
+  email.addEventListener("input", validate);
+  //
+  //
+  const email_regex =
+    /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+  //
+  //
+  function validate(e) {
+    // First Name
+    if (e.target.id == "firstName") {
+      if (e.target.value.length >= 2) {
+        e.target.classList.add("valid");
+        e.target.classList.remove("invalid");
+        console.log("validation happened");
+      } else {
+        e.target.classList.add("invalid");
+        e.target.classList.remove("valid");
+      }
+    }
+    // Last Name
+    if (e.target.id == "lastName") {
+      if (e.target.value.length >= 2) {
+        e.target.classList.add("valid");
+        e.target.classList.remove("invalid");
+        console.log("validation happened");
+      } else {
+        e.target.classList.add("invalid");
+        e.target.classList.remove("valid");
+      }
+    }
+    // Adress
+    if (e.target.id == "adress") {
+      if (e.target.value.length >= 3) {
+        e.target.classList.add("valid");
+        e.target.classList.remove("invalid");
+        console.log("validation happened");
+      } else {
+        e.target.classList.add("invalid");
+        e.target.classList.remove("valid");
+      }
+    }
+    // City
+    if (e.target.id == "city") {
+      if (e.target.value.length >= 1) {
+        e.target.classList.add("valid");
+        e.target.classList.remove("invalid");
+        console.log("validation happened");
+      } else {
+        e.target.classList.add("invalid");
+        e.target.classList.remove("valid");
+      }
+    }
+    // Email
+    if (e.target.id == "email") {
+      if (email_regex.test(e.target.value)) {
+        e.target.classList.add("valid");
+        e.target.classList.remove("invalid");
+      } else {
+        e.target.classList.add("invalid");
+        e.target.classList.remove("valid");
+      }
+    }
+  }
+
+  //
+  // Get contact infos on Submit
+
   form.onsubmit = (e) => {
     e.preventDefault();
-    console.log("click");
     const firstName = form.querySelector("input[id=firstName]").value;
     const lastName = form.querySelector("input[id=lastName]").value;
     const adress = form.querySelector("input[id=adress]").value;
