@@ -44,9 +44,11 @@ document.getElementById("clear").onclick = () => {
   }
 };
 
-const form = document.getElementById("clientInfos");
-
 window.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("clientInfos");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+  });
   //
   // Watch Validity of contact infos
   let firstName = form.querySelector("input[id=firstName]");
@@ -61,6 +63,7 @@ window.addEventListener("DOMContentLoaded", () => {
   adress.addEventListener("input", validate);
   city.addEventListener("input", validate);
   email.addEventListener("input", validate);
+  form.addEventListener("submit", validate);
   //
   //
   const email_regex =
@@ -73,7 +76,6 @@ window.addEventListener("DOMContentLoaded", () => {
       if (e.target.value.length >= 2) {
         e.target.classList.add("valid");
         e.target.classList.remove("invalid");
-        console.log("validation happened");
       } else {
         e.target.classList.add("invalid");
         e.target.classList.remove("valid");
@@ -84,7 +86,6 @@ window.addEventListener("DOMContentLoaded", () => {
       if (e.target.value.length >= 2) {
         e.target.classList.add("valid");
         e.target.classList.remove("invalid");
-        console.log("validation happened");
       } else {
         e.target.classList.add("invalid");
         e.target.classList.remove("valid");
@@ -95,7 +96,6 @@ window.addEventListener("DOMContentLoaded", () => {
       if (e.target.value.length >= 3) {
         e.target.classList.add("valid");
         e.target.classList.remove("invalid");
-        console.log("validation happened");
       } else {
         e.target.classList.add("invalid");
         e.target.classList.remove("valid");
@@ -106,7 +106,6 @@ window.addEventListener("DOMContentLoaded", () => {
       if (e.target.value.length >= 1) {
         e.target.classList.add("valid");
         e.target.classList.remove("invalid");
-        console.log("validation happened");
       } else {
         e.target.classList.add("invalid");
         e.target.classList.remove("valid");
@@ -126,9 +125,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   //
   // Get contact infos on Submit
-
-  form.onsubmit = (e) => {
-    e.preventDefault();
+  form.onsubmit = () => {
     const firstName = form.querySelector("input[id=firstName]").value;
     const lastName = form.querySelector("input[id=lastName]").value;
     const adress = form.querySelector("input[id=adress]").value;
