@@ -43,3 +43,24 @@ document.getElementById("clear").onclick = () => {
     window.location.reload();
   }
 };
+
+window.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("clientInfos");
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    console.log("click");
+    const firstName = form.querySelector("input[id=firstName]").value;
+    const lastName = form.querySelector("input[id=lastName]").value;
+    const adress = form.querySelector("input[id=adress]").value;
+    const city = form.querySelector("input[id=city]").value;
+    const email = form.querySelector("input[id=email]").value;
+    const contact = {
+      firstName,
+      lastName,
+      adress,
+      city,
+      email,
+    };
+    console.log(contact);
+  };
+});
