@@ -1,23 +1,25 @@
-window.onload = () => {
-  getTeddy();
-};
-
 const teddyID = new URL(window.location.href).searchParams.get("id");
 
-const getTeddy = () => {
-  fetch(`http://localhost:3000/api/teddies/${teddyID}`)
+const getTeddyData = () => {
+  return fetch(`http://localhost:3000/api/teddies/${teddyID}`)
     .then((response) => {
       return response.json();
     })
-    .then((data) => {
-      showTeddyData(data);
-      updateTitle(data);
-      showColorOptions(data);
-    })
     .catch((error) => {
       alert("La connexion à la base de données n'a pas pu se faire.");
-      console.log(error);
+      console.error(error);
+      throw error;
     });
+};
+
+const initialTeddy = getTeddyData();
+
+window.onload = () => {
+  initialTeddy.then((data) => {
+    showTeddyData(data);
+    updateTitle(data);
+    showColorOptions(data);
+  });
 };
 
 showTeddyData = (teddyItem) => {
@@ -91,7 +93,7 @@ document.getElementById("addToCart").onclick = () => {
   window.location.reload();
 };
 
-if (localStorage.length == 0) {
+if (JSON.parse(localStorage.getItem("cart")).length === 0) {
   document.getElementById("cartImg").src = "../images/cartempty.png";
 } else {
   document.getElementById("cartImg").src = "../images/cartfull.png";

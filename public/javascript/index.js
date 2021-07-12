@@ -1,19 +1,21 @@
-window.onload = () => {
-  getTeddiesData();
-};
-
 const getTeddiesData = () => {
-  fetch("http://localhost:3000/api/teddies")
+  return fetch("http://localhost:3000/api/teddies")
     .then((response) => {
       return response.json();
     })
-    .then((data) => {
-      showTeddiesData(data);
-    })
     .catch((error) => {
       alert("La connexion à la base de données n'a pas pu se faire.");
-      console.log(error);
+      console.error(error);
+      throw error;
     });
+};
+
+const initialTeddies = getTeddiesData();
+
+window.onload = () => {
+  initialTeddies.then((data) => {
+    showTeddiesData(data);
+  });
 };
 
 showTeddiesData = (teddiesData) => {
@@ -37,7 +39,7 @@ showTeddiesData = (teddiesData) => {
   });
 };
 
-if (localStorage.length == 0) {
+if (JSON.parse(localStorage.getItem("cart")).length === 0) {
   document.getElementById("cartImg").src = "../images/cartempty.png";
 } else {
   document.getElementById("cartImg").src = "../images/cartfull.png";
