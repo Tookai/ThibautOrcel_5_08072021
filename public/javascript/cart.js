@@ -17,6 +17,7 @@ if (localStorage.length == 0) {
       const productContainer = document.importNode(template.content, true);
 
       // fill template
+      productContainer.querySelector(".tedItem").setAttribute("id", teddyItem.id);
       productContainer.querySelector(".tedImage").setAttribute("src", teddyItem.img);
       productContainer.querySelector(".tedImage").setAttribute("alt", `Photo de l'ourson : ${teddyItem.nom}`);
       productContainer.querySelector(".tedName").textContent = teddyItem.nom;
@@ -53,23 +54,25 @@ if (localStorage.length == 0) {
     });
     //
     // Watch Validity of contact infos
-    const firstName = form.querySelector("input[id=firstName]");
-    const lastName = form.querySelector("input[id=lastName]");
-    const adress = form.querySelector("input[id=adress]");
-    const city = form.querySelector("input[id=city]");
-    const email = form.querySelector("input[id=email]");
+    const firstNameInput = form.querySelector("input[id=firstName]");
+    const lastNameInput = form.querySelector("input[id=lastName]");
+    const adressInput = form.querySelector("input[id=adress]");
+    const cityInput = form.querySelector("input[id=city]");
+    const emailInput = form.querySelector("input[id=email]");
     //
     // Validation while typing
-    firstName.addEventListener("input", validate);
-    lastName.addEventListener("input", validate);
-    adress.addEventListener("input", validate);
-    city.addEventListener("input", validate);
-    email.addEventListener("input", validate);
+    firstNameInput.addEventListener("input", validate);
+    lastNameInput.addEventListener("input", validate);
+    adressInput.addEventListener("input", validate);
+    cityInput.addEventListener("input", validate);
+    emailInput.addEventListener("input", validate);
     //
     // Validation on Submit
     form.addEventListener("submit", validate);
     //
     //
+    const text_regex = /^[A-Za-z]{2,60}/;
+    const adress_regex = /^[A-Za-z -,0-9]/;
     const email_regex =
       /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     //
@@ -77,7 +80,7 @@ if (localStorage.length == 0) {
     function validate(e) {
       // First Name
       if (e.target.id == "firstName") {
-        if (e.target.value.length >= 2) {
+        if (text_regex.test(e.target.value)) {
           e.target.classList.add("valid");
           e.target.classList.remove("invalid");
         } else {
@@ -87,7 +90,7 @@ if (localStorage.length == 0) {
       }
       // Last Name
       if (e.target.id == "lastName") {
-        if (e.target.value.length >= 2) {
+        if (text_regex.test(e.target.value)) {
           e.target.classList.add("valid");
           e.target.classList.remove("invalid");
         } else {
@@ -97,7 +100,7 @@ if (localStorage.length == 0) {
       }
       // Adress
       if (e.target.id == "adress") {
-        if (e.target.value.length >= 3) {
+        if (adress_regex.test(e.target.value)) {
           e.target.classList.add("valid");
           e.target.classList.remove("invalid");
         } else {
@@ -107,7 +110,7 @@ if (localStorage.length == 0) {
       }
       // City
       if (e.target.id == "city") {
-        if (e.target.value.length >= 1) {
+        if (text_regex.test(e.target.value)) {
           e.target.classList.add("valid");
           e.target.classList.remove("invalid");
         } else {
@@ -131,28 +134,28 @@ if (localStorage.length == 0) {
     // Get contact infos on Submit
     form.onsubmit = () => {
       if (
-        firstName.className === "valid" &&
-        lastName.className === "valid" &&
-        adress.className === "valid" &&
-        city.className === "valid" &&
-        email.className === "valid"
+        firstNameInput.className === "valid" &&
+        lastNameInput.className === "valid" &&
+        adressInput.className === "valid" &&
+        cityInput.className === "valid" &&
+        emailInput.className === "valid"
       ) {
-        const firstNameValue = firstName.value;
-        const lastNameValue = lastName.value;
-        const adressValue = adress.value;
-        const cityValue = city.value;
-        const emailValue = email.value;
+        const firstName = firstNameInput.value;
+        const lastName = lastNameInput.value;
+        const adress = adressInput.value;
+        const city = cityInput.value;
+        const email = emailInput.value;
         const contact = {
-          firstNameValue,
-          lastNameValue,
-          adressValue,
-          cityValue,
-          emailValue,
+          firstName,
+          lastName,
+          adress,
+          city,
+          email,
         };
         console.log(contact);
         alert("Vos données ont bien été transmises au serveur.");
       } else {
-        alert("Merci de vérifier vos données.");
+        alert("Merci de vérifier que vos données sont correctes");
       }
     };
   });

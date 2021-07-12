@@ -13,10 +13,11 @@ const getTeddy = () => {
       showTeddyData(data);
       updateTitle(data);
       showColorOptions(data);
+    })
+    .catch((error) => {
+      alert("La connexion à la base de données n'a pas pu se faire.");
+      console.log(error);
     });
-  /*     .catch((error) => {
-      alert("La connexion n'a pas pu se faire.");
-    }); */
 };
 
 showTeddyData = (teddyItem) => {
@@ -60,10 +61,12 @@ showColorOptions = (teddyItem) => {
 document.getElementById("addToCart").onclick = () => {
   //
   // Create the item Object
+  const id = teddyID;
   const nom = document.getElementById("name").innerText;
   const prix = document.getElementById("price").innerText;
   const img = document.getElementById("image").src;
   const item = {
+    id,
     nom,
     prix,
     img,
@@ -88,9 +91,9 @@ document.getElementById("addToCart").onclick = () => {
   window.location.reload();
 };
 
-
 if (localStorage.length == 0) {
   document.getElementById("cartImg").src = "../images/cartempty.png";
 } else {
   document.getElementById("cartImg").src = "../images/cartfull.png";
+  console.log(localStorage);
 }

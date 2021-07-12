@@ -11,7 +11,7 @@ const getTeddiesData = () => {
       showTeddiesData(data);
     })
     .catch((error) => {
-      alert("La connexion n'a pas pu se faire.");
+      alert("La connexion à la base de données n'a pas pu se faire.");
       console.log(error);
     });
 };
