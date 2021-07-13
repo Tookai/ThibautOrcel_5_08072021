@@ -1,4 +1,5 @@
-if (cart === 0) {
+if (JSON.parse(localStorage.getItem("cart")) == undefined) {
+  console.log("salut salut");
 } else {
   window.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("clientInfos");

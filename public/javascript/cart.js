@@ -1,6 +1,6 @@
 const cart = JSON.parse(localStorage.getItem("cart"));
 
-if (cart === 0) {
+if (cart == undefined) {
   document.getElementById("totalPriceTag").innerText = `Votre Panier est vide ! Retournez à la page d'accueil pour commencer vos achats.`;
   document.getElementById("clear").classList.add("hide");
 } else {
