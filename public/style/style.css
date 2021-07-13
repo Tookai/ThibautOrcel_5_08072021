@@ -199,6 +199,14 @@ legend {
   background-color: rgba(255, 42, 42, 0.3);
 } */
 
+.clearItem {
+  margin: 0 auto;
+  border: 2px solid red;
+  border-radius: 0.3rem;
+  font-weight: 600;
+  color: red;
+}
+
 footer {
   display: flex;
   flex-direction: column;
@@ -219,4 +227,28 @@ button {
 
 .hide {
   display: none;
+}
+
+.main__remerciements {
+  text-align: center;
+}
+
+.main__remerciements p {
+  margin-bottom: 1rem;
+}
+
+.main__remerciements .commandId {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.backToStart {
+  padding: 1rem;
+  margin-bottom: 3rem;
+  color: #f3e9f1;
+  background-color: #2a38b1;
+  border-radius: 0.3rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }

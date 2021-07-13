@@ -1,4 +1,12 @@
-if (JSON.parse(localStorage.getItem("cart")) == undefined) {
+const getCart = () => {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+};
+
+const cartId = getCart().map((item) => {
+  return item.id;
+});
+
+if (getCart().length === 0) {
   console.log("salut salut");
 } else {
   window.addEventListener("DOMContentLoaded", () => {
@@ -7,13 +15,13 @@ if (JSON.parse(localStorage.getItem("cart")) == undefined) {
     // Get form Input
     const firstNameInput = form.querySelector("input[id=firstName]");
     const lastNameInput = form.querySelector("input[id=lastName]");
-    const adressInput = form.querySelector("input[id=adress]");
+    const addressInput = form.querySelector("input[id=address]");
     const cityInput = form.querySelector("input[id=city]");
     const emailInput = form.querySelector("input[id=email]");
     //
     // Regular Expressions & Testing
     const text_regex = /^[A-Za-z]{2,60}/;
-    const adress_regex = /^[A-Za-z -,0-9]{5,}/;
+    const address_regex = /^[A-Za-z -,0-9]{5,}/;
     const email_regex =
       /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     //
@@ -27,8 +35,8 @@ if (JSON.parse(localStorage.getItem("cart")) == undefined) {
       return text_regex.test(lastName);
     };
     //
-    const isValidAdress = (adress) => {
-      return adress_regex.test(adress);
+    const isValidAddress = (address) => {
+      return address_regex.test(address);
     };
     //
     const isValidCity = (city) => {
@@ -42,7 +50,7 @@ if (JSON.parse(localStorage.getItem("cart")) == undefined) {
     // Validation
     firstNameInput.addEventListener("submit", isValidFirstName);
     lastNameInput.addEventListener("submit", isValidLastName);
-    adressInput.addEventListener("submit", isValidAdress);
+    addressInput.addEventListener("submit", isValidAddress);
     cityInput.addEventListener("submit", isValidCity);
     emailInput.addEventListener("submit", isValidEmail);
     //
@@ -51,13 +59,13 @@ if (JSON.parse(localStorage.getItem("cart")) == undefined) {
       e.preventDefault();
       const firstName = firstNameInput.value;
       const lastName = lastNameInput.value;
-      const adress = adressInput.value;
+      const address = addressInput.value;
       const city = cityInput.value;
       const email = emailInput.value;
       const contact = {
         firstName,
         lastName,
-        adress,
+        address,
         city,
         email,
       };
@@ -65,7 +73,7 @@ if (JSON.parse(localStorage.getItem("cart")) == undefined) {
       const validations = [
         isValidFirstName(firstName),
         isValidLastName(lastName),
-        isValidAdress(adress),
+        isValidAddress(address),
         isValidCity(city),
         isValidEmail(email),
       ];
@@ -88,12 +96,12 @@ if (JSON.parse(localStorage.getItem("cart")) == undefined) {
         lastNameInput.classList.remove("valid");
       }
       //
-      if (isValidAdress(adress)) {
-        adressInput.classList.add("valid");
-        adressInput.classList.remove("invalid");
+      if (isValidAddress(address)) {
+        addressInput.classList.add("valid");
+        addressInput.classList.remove("invalid");
       } else {
-        adressInput.classList.add("invalid");
-        adressInput.classList.remove("valid");
+        addressInput.classList.add("invalid");
+        addressInput.classList.remove("valid");
       }
       //
       if (isValidCity(city)) {
@@ -115,7 +123,37 @@ if (JSON.parse(localStorage.getItem("cart")) == undefined) {
       //
       if (isFormValid) {
         alert("OK TOUT EST BON");
+
+        const order = {
+          contact,
+          products: cartId,
+        };
+
+        const sendOrder = {
+          method: "POST",
+          body: JSON.stringify(order),
+          headers: { "Content-Type": "application/json" },
+        };
+
         console.log(contact);
+        console.log(cartId);
+        console.log(order);
+        console.log(JSON.stringify(order));
+
+        fetch("http://localhost:3000/api/teddies/order", sendOrder)
+          .then((response) => response.json())
+          .then((json) => {
+            console.log(json.orderId);
+            window.location.href = `command.html?orderId=${json.orderId}`;
+          })
+          .catch((error) => {
+            console.error(error);
+            throw error;
+          });
+
+        //
+        // ERREUR 400 SyntaxError
+        //
       } else {
         alert(`Tu t'es trompé mon gars`);
       }

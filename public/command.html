@@ -13,7 +13,38 @@
 
     <link rel="stylesheet" href="./style/style.css" />
 
-    <title>Orinourson - Commande</title>
+    <title>Orinourson - Teddy Bear</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <img id="cartImg" src="../images/cartempty.png" alt="logo : orinoco" class="header__logo" />
+          <img src="../images/logo.png" alt="logo : orinoco" class="header__logo" />
+        </div>
+        <h1 class="header__title">Orinourson</h1>
+      </header>
+
+      <main class="main__oursons" id="products">
+        <template id="command-item">
+          <div class="main__ourson tedItem" id="">
+            <div class="main__txt">
+              <p class="tedName" id="name"></p>
+              <p class="tedPrice" id="price"></p>
+            </div>
+          </div>
+        </template>
+      </main>
+
+      <h2 id="totalPriceTag">Prix Total : 0€</h2>
+
+      <div class="main__remerciements">
+        <p>Merci pour votre commande, nous sommes impatients de vous revoir.</p>
+        <p>Votre bon de commande est le suivant :</p>
+        <p class="commandId" id="commandId">134657945632146</p>
+      </div>
+
+      <button class="backToStart" id="backToStart">Revenir à l'accueil</button>
+    </div>
+  </body>
 </html>

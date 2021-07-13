@@ -1,6 +1,4 @@
-const cart = JSON.parse(localStorage.getItem("cart"));
-
-if (cart == undefined) {
+if (getCart().length === 0) {
   document.getElementById("totalPriceTag").innerText = `Votre Panier est vide ! Retournez à la page d'accueil pour commencer vos achats.`;
   document.getElementById("clear").classList.add("hide");
 } else {
@@ -11,7 +9,7 @@ if (cart == undefined) {
 }
 
 teddiesInCart = () => {
-  cart.map((teddyItem) => {
+  getCart().map((teddyItem) => {
     //
     // get & clone template
     const template = document.querySelector("template#cart-item");
@@ -30,7 +28,7 @@ teddiesInCart = () => {
 };
 
 totalCartPrice = () => {
-  const price = cart.map((teddyItem) => {
+  const price = getCart().map((teddyItem) => {
     return parseFloat(teddyItem.prix);
   });
   const reducer = (accumulator, currentValue) => accumulator + currentValue;

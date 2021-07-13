@@ -39,7 +39,11 @@ showTeddiesData = (teddiesData) => {
   });
 };
 
-if (JSON.parse(localStorage.getItem("cart")) == undefined) {
+const getCart = () => {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+};
+
+if (getCart().length === 0) {
   document.getElementById("cartImg").src = "../images/cartempty.png";
 } else {
   document.getElementById("cartImg").src = "../images/cartfull.png";

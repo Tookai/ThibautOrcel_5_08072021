@@ -68,6 +68,7 @@ document.getElementById("addToCart").onclick = () => {
   const prix = document.getElementById("price").innerText;
   const img = document.getElementById("image").src;
   const item = {
+    quantity: 1,
     id,
     nom,
     prix,
@@ -85,6 +86,7 @@ document.getElementById("addToCart").onclick = () => {
 
   // Add item object to the Items array
   items.push(item);
+  
 
   // Add Items array of objects to the localStorage as a string
   localStorage.setItem("cart", JSON.stringify(items));
@@ -93,9 +95,13 @@ document.getElementById("addToCart").onclick = () => {
   window.location.reload();
 };
 
-if (JSON.parse(localStorage.getItem("cart")) == undefined) {
+const getCart = () => {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+};
+
+if (getCart().length === 0) {
   document.getElementById("cartImg").src = "../images/cartempty.png";
 } else {
   document.getElementById("cartImg").src = "../images/cartfull.png";
-  console.log(localStorage);
+  console.log(getCart());
 }
