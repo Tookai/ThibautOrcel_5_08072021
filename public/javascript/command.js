@@ -56,7 +56,7 @@ getContactInfos().map((contact) => {
 
 totalCartPrice();
 
-/* ADD BACK TO START BUTTON QUI CLEAR LE LOCAL STORAGE */
+/* BACK TO START BUTTON QUI CLEAR LE LOCAL STORAGE */
 const goBackBtn = document.querySelector("button#backToStart");
 goBackBtn.addEventListener("click", (e) => {
   e.preventDefault();

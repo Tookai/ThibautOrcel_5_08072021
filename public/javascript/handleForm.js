@@ -6,11 +6,15 @@ const cartId = getCart().map((item) => {
   return item.id;
 });
 
+const form = document.getElementById("clientInfos");
+
 if (getCart().length === 0) {
-  console.log("salut salut");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert(`Ben allons, votre panier est vide, vous ne pouvez pas commander !`);
+  });
 } else {
   window.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("clientInfos");
     //
     // Get form Input
     const firstNameInput = form.querySelector("input[id=firstName]");
