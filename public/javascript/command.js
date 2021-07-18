@@ -7,6 +7,9 @@ const getContactInfos = () => {
   return JSON.parse(localStorage.getItem("contact")) || [];
 };
 
+const infos = JSON.parse(localStorage.getItem("contact"));
+console.log(infos, "infos");
+
 const getCart = () => {
   return JSON.parse(localStorage.getItem("cart")) || [];
 };
@@ -37,6 +40,22 @@ totalCartPrice = () => {
   const totalPrice = price.reduce(reducer);
   document.getElementById("totalPriceTag").innerText = `Prix Total : ${totalPrice}€`;
 };
+
+getContactInfos().map((contact) => {
+  //
+  // get & clone template
+  const template = document.querySelector("template#contact-infos");
+  const productContainer = document.importNode(template.content, true);
+
+  // fill template
+  productContainer.querySelector("#name").textContent = `${contact.firstName} ${contact.lastName}`;
+  productContainer.querySelector("#address").textContent = contact.address;
+  productContainer.querySelector("#city").textContent = contact.city;
+  productContainer.querySelector("#email").textContent = contact.email;
+
+  // render template
+  document.getElementById("contact").appendChild(productContainer);
+});
 
 totalCartPrice();
 

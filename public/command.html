@@ -19,8 +19,8 @@
     <div class="container">
       <header>
         <div class="logo">
-          <img id="cartImg" src="../images/cartempty.png" alt="logo : orinoco" class="header__logo" />
-          <img src="../images/logo.png" alt="logo : orinoco" class="header__logo" />
+          <a> <img id="cartImg" src="../images/cartempty.png" alt="logo : orinoco" class="header__logo" /></a>
+          <a> <img src="../images/logo.png" alt="logo : orinoco" class="header__logo" /></a>
         </div>
         <h1 class="header__title">Orinourson</h1>
       </header>
@@ -42,6 +42,16 @@
         <p>Merci pour votre commande, nous sommes impatients de vous revoir.</p>
         <p>Votre bon de commande est le suivant :</p>
         <p class="commandId" id="commandId">134657945632146</p>
+      </div>
+
+      <div class="main__contact-infos main__remerciements" id="contact">
+        <template id="contact-infos">
+          <p>Voici les informations personnelles que vous nous avez communiqué :</p>
+          <p id="name">Prénom Nom</p>
+          <p id="address">Adresse</p>
+          <p id="city">Ville</p>
+          <p id="email">Email</p>
+        </template>
       </div>
 
       <button class="backToStart" id="backToStart">Revenir à l'accueil</button>

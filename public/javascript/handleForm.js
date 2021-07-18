@@ -146,14 +146,12 @@ if (getCart().length === 0) {
             throw error;
           });
 
-        const contact_string = JSON.stringify(contact);
-
         // add contact infos to local storage
         const contact_infos = (() => {
           const fieldValue = localStorage.getItem("contact");
           return fieldValue === null ? [] : JSON.parse(fieldValue);
         })();
-        contact_infos.push(contact_string);
+        contact_infos.push(contact);
         localStorage.setItem("contact", JSON.stringify(contact_infos));
 
         console.log(localStorage);
