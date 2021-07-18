@@ -135,11 +135,6 @@ if (getCart().length === 0) {
           headers: { "Content-Type": "application/json" },
         };
 
-        console.log(contact);
-        console.log(cartId);
-        console.log(order);
-        console.log(JSON.stringify(order));
-
         fetch("http://localhost:3000/api/teddies/order", sendOrder)
           .then((response) => response.json())
           .then((json) => {
@@ -151,9 +146,17 @@ if (getCart().length === 0) {
             throw error;
           });
 
-        //
-        // ERREUR 400 SyntaxError
-        //
+        const contact_string = JSON.stringify(contact);
+
+        // add contact infos to local storage
+        const contact_infos = (() => {
+          const fieldValue = localStorage.getItem("contact");
+          return fieldValue === null ? [] : JSON.parse(fieldValue);
+        })();
+        contact_infos.push(contact_string);
+        localStorage.setItem("contact", JSON.stringify(contact_infos));
+
+        console.log(localStorage);
       } else {
         alert(`Tu t'es trompé mon gars`);
       }

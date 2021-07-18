@@ -3,11 +3,16 @@
   document.getElementById("commandId").textContent = orderId;
 })();
 
+const getContactInfos = () => {
+  return JSON.parse(localStorage.getItem("contact")) || [];
+};
+
 const getCart = () => {
   return JSON.parse(localStorage.getItem("cart")) || [];
 };
 
 console.log(getCart());
+console.log(getContactInfos());
 
 getCart().map((teddyItem) => {
   //
