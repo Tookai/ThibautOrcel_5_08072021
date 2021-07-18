@@ -103,5 +103,4 @@ if (getCart().length === 0) {
   document.getElementById("cartImg").src = "../images/cartempty.png";
 } else {
   document.getElementById("cartImg").src = "../images/cartfull.png";
-  console.log(getCart());
 }

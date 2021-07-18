@@ -7,9 +7,6 @@ const getContactInfos = () => {
   return JSON.parse(localStorage.getItem("contact")) || [];
 };
 
-const infos = JSON.parse(localStorage.getItem("contact"));
-console.log(infos, "infos");
-
 const getCart = () => {
   return JSON.parse(localStorage.getItem("cart")) || [];
 };

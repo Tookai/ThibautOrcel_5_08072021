@@ -157,8 +157,6 @@ if (getCart().length === 0) {
         })();
         contact_infos.push(contact);
         localStorage.setItem("contact", JSON.stringify(contact_infos));
-
-        console.log(localStorage);
       } else {
         alert(`Tu t'es trompé mon gars`);
       }
