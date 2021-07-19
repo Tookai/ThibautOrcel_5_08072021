@@ -75,23 +75,16 @@ document.getElementById("addToCart").onclick = () => {
     img,
   };
 
-  // Alert on Click
   alert(`Vous allez ajouter la peluche ${nom} à votre panier.`);
 
-  // Create empty array [] IF it doesnt exist
+  // add cart to local storage
   const items = (() => {
     const fieldValue = localStorage.getItem("cart");
     return fieldValue === null ? [] : JSON.parse(fieldValue);
   })();
-
-  // Add item object to the Items array
   items.push(item);
-  
-
-  // Add Items array of objects to the localStorage as a string
   localStorage.setItem("cart", JSON.stringify(items));
 
-  // Reload the page
   window.location.reload();
 };
 

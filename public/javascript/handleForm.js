@@ -57,10 +57,12 @@ if (getCart().length === 0) {
     addressInput.addEventListener("submit", isValidAddress);
     cityInput.addEventListener("submit", isValidCity);
     emailInput.addEventListener("submit", isValidEmail);
+
     //
     // Get contact infos on Submit
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+
       const firstName = firstNameInput.value;
       const lastName = lastNameInput.value;
       const address = addressInput.value;
@@ -73,7 +75,7 @@ if (getCart().length === 0) {
         city,
         email,
       };
-      //
+
       const validations = [
         isValidFirstName(firstName),
         isValidLastName(lastName),
@@ -81,9 +83,11 @@ if (getCart().length === 0) {
         isValidCity(city),
         isValidEmail(email),
       ];
+
       const isFormValid = validations.every((isValid) => isValid);
+
       //
-      // Display Style
+      // Display Validation Style
       if (isValidFirstName(firstName)) {
         firstNameInput.classList.add("valid");
         firstNameInput.classList.remove("invalid");
@@ -91,7 +95,7 @@ if (getCart().length === 0) {
         firstNameInput.classList.add("invalid");
         firstNameInput.classList.remove("valid");
       }
-      //
+
       if (isValidLastName(lastName)) {
         lastNameInput.classList.add("valid");
         lastNameInput.classList.remove("invalid");
@@ -99,7 +103,7 @@ if (getCart().length === 0) {
         lastNameInput.classList.add("invalid");
         lastNameInput.classList.remove("valid");
       }
-      //
+
       if (isValidAddress(address)) {
         addressInput.classList.add("valid");
         addressInput.classList.remove("invalid");
@@ -107,7 +111,7 @@ if (getCart().length === 0) {
         addressInput.classList.add("invalid");
         addressInput.classList.remove("valid");
       }
-      //
+
       if (isValidCity(city)) {
         cityInput.classList.add("valid");
         cityInput.classList.remove("invalid");
@@ -115,7 +119,7 @@ if (getCart().length === 0) {
         cityInput.classList.add("invalid");
         cityInput.classList.remove("valid");
       }
-      //
+
       if (isValidEmail(email)) {
         emailInput.classList.add("valid");
         emailInput.classList.remove("invalid");
@@ -126,8 +130,6 @@ if (getCart().length === 0) {
       //
       //
       if (isFormValid) {
-        alert("OK TOUT EST BON");
-
         const order = {
           contact,
           products: cartId,
@@ -158,7 +160,7 @@ if (getCart().length === 0) {
         contact_infos.push(contact);
         localStorage.setItem("contact", JSON.stringify(contact_infos));
       } else {
-        alert(`Tu t'es trompé mon gars`);
+        alert(`Veuillez bien vérifier que les champs du formulaire soient remplis correctement.`);
       }
     });
   });

@@ -13,9 +13,7 @@ const getTeddiesData = () => {
 const initialTeddies = getTeddiesData();
 
 window.onload = () => {
-  initialTeddies.then((data) => {
-    showTeddiesData(data);
-  });
+  initialTeddies.then((data) => showTeddiesData(data));
 };
 
 showTeddiesData = (teddiesData) => {
