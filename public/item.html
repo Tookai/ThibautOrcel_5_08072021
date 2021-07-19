@@ -25,47 +25,43 @@
         <h1 class="header__title">Orinourson</h1>
       </header>
       <section>
-        <p class="section__txt">
+        <p class="txt-center-bigger">
           Personnalisez votre ours <br />
           en peluche à votre goût
         </p>
       </section>
 
-      <main class="main__oursons" id="products">
+      <main class="flex-col" id="products">
         <template id="single-item">
-          <div class="main__ourson tedItem" id="">
-            <img src="" alt="" class="main__img tedImage" id="image" />
-            <div class="main__txt">
+          <div class="dark-card tedItem" id="">
+            <img src="" alt="" class="tedImage" id="image" />
+            <div class="card-txt">
               <p class="tedName" id="name"></p>
               <p class="tedPrice" id="price"></p>
             </div>
             <hr />
-            <div class="main__description">
-              <p class="tedDescription"></p>
+            <div>
+              <p class="tedDescription justify-txt"></p>
             </div>
           </div>
         </template>
       </main>
 
-      <div id="testing"></div>
-
-      <div class="main__form">
+      <div class="center-txt">
         <p>Choisissez votre couleur préférée :</p>
-        <form action="pickColor">
-          <select name="couleur" id="colors">
+        <form action="pickColor" class="form">
+          <select name="couleur" id="colors" class="select">
             <template id="color-template">
               <option class="color-options" value=""></option>
             </template>
           </select>
         </form>
-        <a><button id="addToCart" class="formBtn">Ajouter Au Panier</button></a>
+        <a><button id="addToCart" class="blue-btn">Ajouter Au Panier</button></a>
       </div>
 
       <footer>
         <a href="panier.html">Votre Panier</a>
-        <a href="#">Vos Commandes</a>
         <a href="mailto:orinoco@contact.fr">Nous Contacter</a>
-        <a href="#">Un Hôtel ? Trivago</a>
       </footer>
     </div>
   </body>

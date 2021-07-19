@@ -13,22 +13,21 @@
 
     <link rel="stylesheet" href="./style/style.css" />
 
-    <title>Orinourson - Teddy Bear</title>
+    <title>Orinourson - Commande</title>
   </head>
   <body>
     <div class="container">
       <header>
         <div class="logo">
-          <a> <img id="cartImg" src="../images/cartempty.png" alt="logo : orinoco" class="header__logo" /></a>
           <a> <img src="../images/logo.png" alt="logo : orinoco" class="header__logo" /></a>
         </div>
-        <h1 class="header__title">Orinourson</h1>
+        <h1 class="header__title">Votre Commande</h1>
       </header>
 
-      <main class="main__oursons" id="products">
+      <main class="flex-col" id="products">
         <template id="command-item">
-          <div class="main__ourson tedItem" id="">
-            <div class="main__txt">
+          <div class="dark-card tedItem" id="">
+            <div class="card-txt pad-03rem">
               <p class="tedName" id="name"></p>
               <p class="tedPrice" id="price"></p>
             </div>
@@ -38,23 +37,27 @@
 
       <h2 id="totalPriceTag">Prix Total : 0€</h2>
 
-      <div class="main__remerciements">
+      <div class="txt-center-bigger">
         <p>Merci pour votre commande, nous sommes impatients de vous revoir.</p>
-        <p>Votre bon de commande est le suivant :</p>
-        <p class="commandId" id="commandId">134657945632146</p>
+        <p class="mb-1rem">Votre bon de commande est le suivant :</p>
+        <p class="bold" id="commandId">134657945632146</p>
       </div>
 
-      <div class="main__contact-infos main__remerciements" id="contact">
+      <div class="txt-center-bigger" id="contact">
         <template id="contact-infos">
-          <p>Voici les informations personnelles que vous nous avez communiqué :</p>
-          <p id="name">Prénom Nom</p>
-          <p id="address">Adresse</p>
-          <p id="city">Ville</p>
-          <p id="email">Email</p>
+          <p class="mb-1rem">Voici les informations personnelles que vous nous avez communiqué :</p>
+          <p id="name" class="bold">Prénom Nom</p>
+          <p id="address" class="bold">Adresse</p>
+          <p id="city" class="bold">Ville</p>
+          <p id="email" class="bold">Email</p>
         </template>
       </div>
 
-      <button class="backToStart" id="backToStart">Revenir à l'accueil</button>
+      <button class="blue-btn txt-center-bigger mb-3rem" id="backToStart">Revenir à l'accueil</button>
+
+      <footer>
+        <a href="mailto:orinoco@contact.fr">Nous Contacter</a>
+      </footer>
     </div>
   </body>
 </html>

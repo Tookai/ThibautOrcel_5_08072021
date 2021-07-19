@@ -9,25 +9,6 @@ body {
   background-color: darkgray;
 }
 
-.container {
-  width: 375px;
-  padding: 0 1rem;
-  margin: 0 auto;
-  background-color: #f3e9f1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.logo {
-  display: flex;
-}
-
-.header__logo {
-  width: 100%;
-  height: auto;
-}
-
 h1 {
   font-family: "Akaya Kanadaka", cursive;
   font-size: 3rem;
@@ -40,171 +21,6 @@ h2 {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 1rem;
-}
-
-.section__txt {
-  text-align: center;
-  font-size: 1.2rem;
-  margin: 1rem 0;
-}
-
-.main__oursons {
-  display: flex;
-  flex-direction: column;
-}
-
-.main__ourson {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2rem;
-  padding: 0.5rem;
-  background-color: #333333;
-  border-radius: 0.3rem;
-  font-size: 1.2rem;
-  color: #f3e9f1;
-}
-
-.main__txt {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem 1rem;
-  padding-top: 1rem;
-  align-items: center;
-}
-
-.main__txt button {
-  padding: 0.5rem;
-  background-color: #f3e9f1;
-  border: none;
-  outline: none;
-  border-radius: 0.3rem;
-  cursor: pointer;
-}
-
-.main__description p {
-  text-align: justify;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-}
-
-.clearBasketBtn {
-  width: 50%;
-  margin: 1rem auto;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  font-size: 1.2rem;
-  background-color: rgba(255, 0, 0, 0.1);
-  border: solid 2px red;
-  border-radius: 0.3rem;
-  font-weight: bold;
-  color: red;
-}
-
-.main__form {
-  text-align: center;
-}
-
-.main__form form {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: fit-content;
-}
-
-.main__form select {
-  padding: 0.3rem 1rem;
-  margin: 1rem 0;
-}
-
-.formBtn {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  color: #f3e9f1;
-  background-color: #2a38b1;
-  border-radius: 0.3rem;
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
-
-.command {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.command p {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.command button {
-  padding: 1rem;
-  margin: 1rem 0;
-}
-
-.command input {
-  padding: 0.3rem;
-}
-
-fieldset {
-  margin-bottom: 1rem;
-}
-
-legend {
-  padding: 0 0.5rem;
-}
-
-.form__sexe {
-  display: flex;
-  padding: 1rem;
-  justify-content: space-between;
-}
-
-.form__infos {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-}
-
-.form__infos input {
-  margin-bottom: 0.7rem;
-}
-
-.main__ourson .suppr {
-  border: 2px solid red;
-  color: red;
-}
-
-.valid {
-  border: 3px solid rgba(26, 126, 48, 0.8) !important;
-  border-radius: 0.3rem;
-}
-
-.invalid {
-  border: 3px solid rgba(233, 30, 30, 0.8);
-  border-radius: 0.3rem;
-}
-
-/* input {
-  border: 3px solid rgba(233, 30, 30, 0.8);
-  border-radius: 0.3rem;
-} */
-
-/* .valid:focus {
-  background-color: rgba(52, 255, 96, 0.3);
-}
-
-.invalid:focus {
-  background-color: rgba(255, 42, 42, 0.3);
-} */
-
-.clearItem {
-  margin: 0 auto;
-  border: 2px solid red;
-  border-radius: 0.3rem;
-  font-weight: 600;
-  color: red;
 }
 
 footer {
@@ -225,30 +41,210 @@ button {
   cursor: pointer;
 }
 
+/* *************************************** */
+
+.container {
+  width: 375px;
+  padding: 0 1rem;
+  margin: 0 auto;
+  background-color: #f3e9f1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  display: flex;
+}
+
+.header__logo {
+  width: 100%;
+  height: auto;
+}
+
+/* *************************************** */
+
+/* main__oursons */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* main__ourson */
+.dark-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  background-color: #333333;
+  border-radius: 0.3rem;
+  font-size: 1.2rem;
+  color: #f3e9f1;
+}
+
+/* *************************************** */
+
+/* main__txt */
+.card-txt {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  padding-top: 1rem;
+  align-items: center;
+}
+
+/* section__txt */
+.txt-center-bigger {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+/* main__form */
+.center-txt {
+  text-align: center;
+}
+
+/* main__description p */
+.justify-txt {
+  text-align: justify;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* *************************************** */
+
+/* main__form form */
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+/* main__form select */
+.select {
+  padding: 0.3rem 1rem;
+  margin: 1rem 0;
+}
+
+/* *************************************** */
+
+.command {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.command p {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.command button {
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.command input {
+  padding: 0.3rem;
+  margin-bottom: 0.7rem;
+}
+
+fieldset {
+  margin-bottom: 1rem;
+}
+
+legend {
+  padding: 0 0.5rem;
+}
+
+.command__infos {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+/* *************************************** */
+
+.valid {
+  border: 3px solid rgba(26, 126, 48, 0.8) !important;
+  border-radius: 0.3rem;
+}
+
+.invalid {
+  border: 3px solid rgba(233, 30, 30, 0.8);
+  border-radius: 0.3rem;
+}
+
+/* *************************************** */
+
 .hide {
   display: none;
 }
 
-.main__remerciements {
-  text-align: center;
+/* *************************************** */
+
+/* main__txt button */
+.light-btn {
+  padding: 0.5rem;
+  background-color: #f3e9f1;
+  border: none;
+  outline: none;
+  border-radius: 0.3rem;
 }
 
-.main__remerciements p {
-  margin-bottom: 1rem;
-}
-
-.main__remerciements .commandId {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.backToStart {
+/* clearBasketBtn */
+.red-btn {
+  width: 50%;
+  margin: 1rem auto;
+  margin-bottom: 2rem;
   padding: 1rem;
-  margin-bottom: 3rem;
+  font-size: 1.2rem;
+  background-color: rgba(255, 0, 0, 0.1);
+  border: solid 2px red;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  color: red;
+}
+
+/* formBtn */
+.blue-btn {
+  padding: 1rem;
+  margin-bottom: 1rem;
   color: #f3e9f1;
   background-color: #2a38b1;
   border-radius: 0.3rem;
   border: none;
   outline: none;
-  cursor: pointer;
 }
+
+.green-btn {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: #f3e9f1;
+  background-color: #087a34;
+  border-radius: 0.3rem;
+  border: none;
+  outline: none;
+}
+
+/* *************************************** */
+
+.pad-03rem {
+  padding: 0.3rem;
+}
+
+.mb-1rem {
+  margin-bottom: 1rem;
+}
+
+.mb-3rem {
+  margin-bottom: 3rem;
+}
+
+/* *************************************** */

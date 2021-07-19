@@ -23,30 +23,34 @@
         <h1 class="header__title">Votre Panier</h1>
       </header>
       <section>
-        <p class="section__txt">
+        <p class="txt-center-bigger">
           Voici le contenu de votre panier, <br />
           vérifiez que tout y est ou que <br />
           vous n'avez pas d'article(s) en trop.
         </p>
-        <p class="section__txt">Ensuite donnez nous vos informations personnelles et passez votre commande.</p>
+        <p class="txt-center-bigger">Ensuite donnez nous vos informations personnelles et passez votre commande.</p>
       </section>
-      <main class="main__oursons" id="cart">
+
+      <main class="flex-col" id="cart">
         <template id="cart-item">
-          <div class="main__ourson tedItem" id="">
-            <img src="" alt="" class="main__img tedImage" />
-            <div class="main__txt">
+          <div class="dark-card tedItem" id="">
+            <img src="" alt="" class="tedImage" />
+            <div class="card-txt">
               <p class="tedName"></p>
               <p class="tedPrice"></p>
             </div>
           </div>
         </template>
       </main>
+
       <h2 id="totalPriceTag">Prix Total : 0€</h2>
-      <button id="clear" class="clearBasketBtn">Vider Le Panier</button>
+
+      <button id="clear" class="red-btn">Vider Le Panier</button>
+
       <form class="command" id="clientInfos">
         <fieldset>
           <legend>Qui êtes vous ?</legend>
-          <div class="form__infos">
+          <div class="command__infos">
             <label for="firstName">Prénom : </label>
             <input type="text" required id="firstName" placeholder="Jean" />
             <label for="lastName">Nom : </label>
@@ -59,14 +63,12 @@
             <input type="email" required id="email" placeholder="jean.dujardin@gmail.com" />
           </div>
         </fieldset>
-        <button class="formBtn" id="paymentBtn">Passer au paiement</button>
+        <button class="green-btn txt-center-bigger" id="paymentBtn">Passer au paiement</button>
       </form>
 
       <footer>
         <a href="panier.html">Votre Panier</a>
-        <a href="#">Vos Commandes</a>
         <a href="mailto:orinoco@contact.fr">Nous Contacter</a>
-        <a href="#">Un Hôtel ? Trivago</a>
       </footer>
     </div>
   </body>
