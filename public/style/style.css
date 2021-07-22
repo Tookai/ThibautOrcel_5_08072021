@@ -71,6 +71,15 @@ button {
   flex-direction: column;
 }
 
+.flex {
+  display: flex;
+}
+
+.flex-w {
+  justify-content: space-between;
+  flex: 0.33;
+}
+
 /* main__ourson */
 .dark-card {
   display: flex;
@@ -104,6 +113,10 @@ button {
 /* main__form */
 .center-txt {
   text-align: center;
+}
+
+.right-txt {
+  text-align: right;
 }
 
 /* main__description p */

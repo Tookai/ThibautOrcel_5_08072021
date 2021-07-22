@@ -3,10 +3,26 @@ if (getCart().length === 0) {
   document.getElementById("clear").classList.add("hide");
 } else {
   window.onload = () => {
+/*     stackItemsInCart(); */
     teddiesInCart();
     totalCartPrice();
+    totalCartItems();
   };
 }
+
+console.log(getCart());
+
+/* let data = getCart();
+console.log(data);
+
+stackItemsInCart = () => {
+  data = Array.from(
+    data.reduce((acc, { id, quantite }) => acc.set(id, (acc.get(id) || 0) + parseFloat(quantite)), new Map()),
+    ([id, quantite]) => ({ id, quantite })
+  );
+
+  console.log(data, "stacked cart");
+}; */
 
 teddiesInCart = () => {
   getCart().map((teddyItem) => {
@@ -17,19 +33,31 @@ teddiesInCart = () => {
 
     // fill template
     productContainer.querySelector(".tedItem").setAttribute("id", teddyItem.id);
-    productContainer.querySelector(".tedImage").setAttribute("src", teddyItem.img);
-    productContainer.querySelector(".tedImage").setAttribute("alt", `Photo de l'ourson : ${teddyItem.nom}`);
-    productContainer.querySelector(".tedName").textContent = teddyItem.nom;
-    productContainer.querySelector(".tedPrice").textContent = teddyItem.prix;
+    productContainer.querySelector(".tedImage").setAttribute("src", teddyItem.details.img);
+    productContainer.querySelector(".tedImage").setAttribute("alt", `Photo de l'ourson : ${teddyItem.details.nom}`);
+    productContainer.querySelector(".tedName").textContent = teddyItem.details.nom;
+    productContainer.querySelector(".tedPrice").textContent = teddyItem.details.prix;
+    productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;
+    productContainer.querySelector(".tedQuantity").textContent = teddyItem.quantite;
+    productContainer.querySelector(".tedTotal").textContent = `${parseFloat(teddyItem.details.prix) * parseFloat(teddyItem.quantite)},00€`;
 
     // render template
     document.getElementById("cart").appendChild(productContainer);
   });
 };
 
+totalCartItems = () => {
+  const items = getCart().map((teddyItem) => {
+    return parseFloat(teddyItem.quantite);
+  });
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  const totalItems = items.reduce(reducer);
+  document.getElementById("totalItemsTag").innerText = `Quantité Totale : ${totalItems}`;
+};
+
 totalCartPrice = () => {
   const price = getCart().map((teddyItem) => {
-    return parseFloat(teddyItem.prix);
+    return parseFloat(teddyItem.details.prix) * parseFloat(teddyItem.quantite);
   });
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
   const totalPrice = price.reduce(reducer);

@@ -16,17 +16,31 @@ getCart().map((teddyItem) => {
   const productContainer = document.importNode(template.content, true);
 
   // fill template
-  productContainer.querySelector(".tedItem").setAttribute("id", teddyItem.id);
-  productContainer.querySelector(".tedName").textContent = teddyItem.nom;
-  productContainer.querySelector(".tedPrice").textContent = teddyItem.prix;
+  productContainer.querySelector(".tedItem").setAttribute("id", teddyItem.details.id);
+  productContainer.querySelector(".tedName").textContent = teddyItem.details.nom;
+  productContainer.querySelector(".tedPrice").textContent = teddyItem.details.prix;
+  productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;
+  productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;
+  productContainer.querySelector(".tedQuantity").textContent = teddyItem.quantite;
+  productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;
+  productContainer.querySelector(".tedTotal").textContent = `${parseFloat(teddyItem.details.prix) * parseFloat(teddyItem.quantite)},00€`;
 
   // render template
   document.getElementById("products").appendChild(productContainer);
 });
 
+totalCartItems = () => {
+  const items = getCart().map((teddyItem) => {
+    return parseFloat(teddyItem.quantite);
+  });
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  const totalItems = items.reduce(reducer);
+  document.getElementById("totalItemsTag").innerText = `Quantité Totale : ${totalItems}`;
+};
+
 totalCartPrice = () => {
   const price = getCart().map((teddyItem) => {
-    return parseFloat(teddyItem.prix);
+    return parseFloat(teddyItem.details.prix) * parseFloat(teddyItem.quantite);
   });
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
   const totalPrice = price.reduce(reducer);
@@ -50,6 +64,7 @@ getContactInfos().map((contact) => {
 });
 
 totalCartPrice();
+totalCartItems();
 
 /* BACK TO START BUTTON QUI CLEAR LE LOCAL STORAGE */
 const goBackBtn = document.querySelector("button#backToStart");

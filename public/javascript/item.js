@@ -1,5 +1,9 @@
 const teddyID = new URL(window.location.href).searchParams.get("id");
 
+const getCart = () => {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+};
+
 const getTeddyData = () => {
   return fetch(`http://localhost:3000/api/teddies/${teddyID}`)
     .then((response) => {
@@ -64,16 +68,23 @@ document.getElementById("addToCart").onclick = () => {
   //
   // Create the item Object
   const id = teddyID;
+  const couleur = document.querySelector("select#colors").value;
+  const quantite = document.querySelector("select#quantity").value;
   const nom = document.getElementById("name").innerText;
   const prix = document.getElementById("price").innerText;
   const img = document.getElementById("image").src;
   const item = {
-    quantity: 1,
     id,
-    nom,
-    prix,
-    img,
+    couleur,
+    quantite,
+    details: {
+      nom,
+      prix,
+      img,
+    },
   };
+
+  console.log(item);
 
   alert(`Vous allez ajouter la peluche ${nom} à votre panier.`);
 
@@ -82,14 +93,31 @@ document.getElementById("addToCart").onclick = () => {
     const fieldValue = localStorage.getItem("cart");
     return fieldValue === null ? [] : JSON.parse(fieldValue);
   })();
-  items.push(item);
+
+  const filterId = items.filter((e) => e.id === item.id);
+  const filterColor = items.filter((e) => e.couleur === item.couleur);
+
+  const itemExists = filterId && filterColor;
+  console.log(itemExists, "item exists");
+
+  const itemFind = items.find((e) => e.id === item.id && e.couleur === item.couleur);
+  console.log(itemFind, "item find");
+
+  if (itemFind) {
+    console.log("add quantity");
+    console.log(itemFind.quantite, "original value");
+    console.log(quantite, "added value");
+    console.log(parseFloat(itemFind.quantite) + parseFloat(quantite), "addition done");
+    itemFind.quantite = parseFloat(itemFind.quantite) + parseFloat(quantite);
+  } else {
+    items.push(item);
+  }
+
   localStorage.setItem("cart", JSON.stringify(items));
 
-  window.location.reload();
-};
-
-const getCart = () => {
-  return JSON.parse(localStorage.getItem("cart")) || [];
+  console.log(item.id);
+  console.log(items);
+  /* window.location.reload(); */
 };
 
 if (getCart().length === 0) {

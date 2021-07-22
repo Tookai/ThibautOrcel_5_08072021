@@ -49,12 +49,20 @@
       </main>
 
       <div class="center-txt">
-        <p>Choisissez votre couleur préférée :</p>
         <form action="pickColor" class="form">
+          <p>Choisissez votre couleur préférée :</p>
           <select name="couleur" id="colors" class="select">
             <template id="color-template">
               <option class="color-options" value=""></option>
             </template>
+          </select>
+          <p>Ainsi que la quantité voulue :</p>
+          <select name="quantity" id="quantity" class="select">
+            <option class="quantity-options" value="1">1</option>
+            <option class="quantity-options" value="2">2</option>
+            <option class="quantity-options" value="3">3</option>
+            <option class="quantity-options" value="4">4</option>
+            <option class="quantity-options" value="5">5</option>
           </select>
         </form>
         <a><button id="addToCart" class="blue-btn">Ajouter Au Panier</button></a>
