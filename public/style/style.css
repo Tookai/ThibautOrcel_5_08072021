@@ -77,7 +77,7 @@ button {
 
 .flex-w {
   justify-content: space-between;
-  flex: 0.33;
+  flex: 1;
 }
 
 /* main__ourson */

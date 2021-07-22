@@ -9,26 +9,33 @@ const getCart = () => {
   return JSON.parse(localStorage.getItem("cart")) || [];
 };
 
-getCart().map((teddyItem) => {
-  //
-  // get & clone template
-  const template = document.querySelector("template#command-item");
-  const productContainer = document.importNode(template.content, true);
+window.onload = () => {
+  showCommand();
+  totalCartPrice();
+  totalCartItems();
+};
 
-  // fill template
-  productContainer.querySelector(".tedItem").setAttribute("id", teddyItem.details.id);
-  productContainer.querySelector(".tedName").textContent = teddyItem.details.nom;
-  productContainer.querySelector(".tedPrice").textContent = teddyItem.details.prix;
-  productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;
-  productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;
-  productContainer.querySelector(".tedQuantity").textContent = teddyItem.quantite;
-  productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;
-  productContainer.querySelector(".tedTotal").textContent = `${parseFloat(teddyItem.details.prix) * parseFloat(teddyItem.quantite)},00€`;
+showCommand = () => {
+  getCart().map((teddyItem) => {
+    //
+    // get & clone template
+    const template = document.querySelector("template#command-item");
+    const productContainer = document.importNode(template.content, true);
 
-  // render template
-  document.getElementById("products").appendChild(productContainer);
-});
+    // fill template
+    productContainer.querySelector(".tedItem").setAttribute("id", teddyItem.details.id);
+    productContainer.querySelector(".tedName").textContent = teddyItem.details.nom;
+    productContainer.querySelector(".tedPrice").textContent = teddyItem.details.prix;
+    productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;
+    productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;
+    productContainer.querySelector(".tedQuantity").textContent = teddyItem.quantite;
+    productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;
+    productContainer.querySelector(".tedTotal").textContent = `${parseFloat(teddyItem.details.prix) * parseFloat(teddyItem.quantite)},00€`;
 
+    // render template
+    document.getElementById("products").appendChild(productContainer);
+  });
+};
 totalCartItems = () => {
   const items = getCart().map((teddyItem) => {
     return parseFloat(teddyItem.quantite);
@@ -62,9 +69,6 @@ getContactInfos().map((contact) => {
   // render template
   document.getElementById("contact").appendChild(productContainer);
 });
-
-totalCartPrice();
-totalCartItems();
 
 /* BACK TO START BUTTON QUI CLEAR LE LOCAL STORAGE */
 const goBackBtn = document.querySelector("button#backToStart");

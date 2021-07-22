@@ -94,30 +94,17 @@ document.getElementById("addToCart").onclick = () => {
     return fieldValue === null ? [] : JSON.parse(fieldValue);
   })();
 
-  const filterId = items.filter((e) => e.id === item.id);
-  const filterColor = items.filter((e) => e.couleur === item.couleur);
-
-  const itemExists = filterId && filterColor;
-  console.log(itemExists, "item exists");
-
   const itemFind = items.find((e) => e.id === item.id && e.couleur === item.couleur);
   console.log(itemFind, "item find");
 
   if (itemFind) {
-    console.log("add quantity");
-    console.log(itemFind.quantite, "original value");
-    console.log(quantite, "added value");
-    console.log(parseFloat(itemFind.quantite) + parseFloat(quantite), "addition done");
     itemFind.quantite = parseFloat(itemFind.quantite) + parseFloat(quantite);
   } else {
     items.push(item);
   }
 
   localStorage.setItem("cart", JSON.stringify(items));
-
-  console.log(item.id);
-  console.log(items);
-  /* window.location.reload(); */
+  window.location.reload();
 };
 
 if (getCart().length === 0) {
