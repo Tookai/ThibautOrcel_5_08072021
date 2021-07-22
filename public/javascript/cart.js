@@ -1,14 +1,3 @@
-if (getCart().length === 0) {
-  document.getElementById("totalPriceTag").innerText = `Votre Panier est vide ! Retournez à la page d'accueil pour commencer vos achats.`;
-  document.getElementById("clear").classList.add("hide");
-} else {
-  window.onload = () => {
-    showTeddiesInCart();
-    totalCartPrice();
-    totalCartItems();
-  };
-}
-
 showTeddiesInCart = () => {
   getCart().map((teddyItem) => {
     //
@@ -17,7 +6,8 @@ showTeddiesInCart = () => {
     const productContainer = document.importNode(template.content, true);
 
     // fill template
-    productContainer.querySelector(".tedItem").setAttribute("id", `${teddyItem.id}${teddyItem.couleur}`);
+    productContainer.querySelector(".tedItem").setAttribute("id", `${teddyItem.id}`);
+    productContainer.querySelector(".tedItem").setAttribute("name", `${teddyItem.couleur}`);
     productContainer.querySelector(".tedImage").setAttribute("src", teddyItem.details.img);
     productContainer.querySelector(".tedImage").setAttribute("alt", `Photo de l'ourson : ${teddyItem.details.nom}`);
     productContainer.querySelector(".tedName").textContent = teddyItem.details.nom;
@@ -30,6 +20,17 @@ showTeddiesInCart = () => {
     document.getElementById("cart").appendChild(productContainer);
   });
 };
+
+if (getCart().length === 0) {
+  document.getElementById("totalPriceTag").innerText = `Votre Panier est vide ! Retournez à la page d'accueil pour commencer vos achats.`;
+  document.getElementById("clear").classList.add("hide");
+} else {
+  showTeddiesInCart();
+  window.onload = () => {
+    totalCartPrice();
+    totalCartItems();
+  };
+}
 
 totalCartItems = () => {
   const items = getCart().map((teddyItem) => {
@@ -56,3 +57,62 @@ document.getElementById("clear").onclick = () => {
     window.location.reload();
   }
 };
+
+//
+// Remove 1 from cart
+const minus1 = document.querySelectorAll("button.minus1-btn");
+for (let i = 0; i < minus1.length; i++) {
+  let minus1_btn = minus1[i];
+  minus1_btn.addEventListener("click", () => {
+    const container = minus1_btn.parentElement.parentElement;
+    const id = container.id;
+    const color = container.getAttribute("name");
+    console.log(id, color);
+
+    const items = (() => {
+      const fieldValue = localStorage.getItem("cart");
+      return fieldValue === null ? [] : JSON.parse(fieldValue);
+    })();
+
+    const itemFind = items.find((e) => e.id === id && e.couleur === color);
+    console.log(itemFind);
+    console.log(itemFind.quantite - 1);
+
+    if (itemFind.quantite > 1) {
+      itemFind.quantite = parseFloat(itemFind.quantite) - 1;
+      console.log(i, "index");
+    } else if ((itemFind.quantite = 1)) {
+      if (confirm("Êtes vous sûr de vouloir complètement supprimer cet ourson du panier ?")) {
+        items.splice(i, 1);
+      }
+    }
+
+    localStorage.setItem("cart", JSON.stringify(items));
+    window.location.reload();
+  });
+}
+
+//
+// Add 1 in cart
+const plus1 = document.querySelectorAll("button.plus1-btn");
+for (let i = 0; i < plus1.length; i++) {
+  let plus1_btn = plus1[i];
+  plus1_btn.addEventListener("click", () => {
+    const container = plus1_btn.parentElement.parentElement;
+    const id = container.id;
+    const color = container.getAttribute("name");
+    console.log(id, color);
+
+    const items = (() => {
+      const fieldValue = localStorage.getItem("cart");
+      return fieldValue === null ? [] : JSON.parse(fieldValue);
+    })();
+
+    const itemFind = items.find((e) => e.id === id && e.couleur === color);
+
+    itemFind.quantite = parseFloat(itemFind.quantite) + 1;
+
+    localStorage.setItem("cart", JSON.stringify(items));
+    window.location.reload();
+  });
+}
