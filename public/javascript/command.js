@@ -34,6 +34,9 @@ showTeddiesInCommand = () => {
     document.getElementById("products").appendChild(productContainer);
   });
 };
+
+//
+//
 totalCartItems = () => {
   const items = getCart().map((teddyItem) => {
     return parseFloat(teddyItem.quantite);
@@ -43,6 +46,8 @@ totalCartItems = () => {
   document.getElementById("totalItemsTag").innerText = `Quantité Totale : ${totalItems}`;
 };
 
+//
+//
 totalCartPrice = () => {
   const price = getCart().map((teddyItem) => {
     return parseFloat(teddyItem.details.prix) * parseFloat(teddyItem.quantite);
@@ -52,6 +57,8 @@ totalCartPrice = () => {
   document.getElementById("totalPriceTag").innerText = `Prix Total : ${totalPrice}€`;
 };
 
+//
+//
 getContactInfos().map((contact) => {
   //
   // get & clone template
@@ -68,10 +75,10 @@ getContactInfos().map((contact) => {
   document.getElementById("contact").appendChild(productContainer);
 });
 
-/* BACK TO START BUTTON QUI CLEAR LE LOCAL STORAGE */
+//
+// BACK TO START BUTTON QUI CLEAR LE LOCAL STORAGE
 const goBackBtn = document.querySelector("button#backToStart");
 goBackBtn.addEventListener("click", (e) => {
-  e.preventDefault();
   localStorage.clear();
   window.location.href = `index.html`;
 });

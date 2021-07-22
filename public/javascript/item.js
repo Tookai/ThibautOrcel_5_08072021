@@ -37,7 +37,7 @@ showTeddyData = (teddyItem) => {
   productContainer.querySelector(".tedImage").setAttribute("src", teddyItem.imageUrl);
   productContainer.querySelector(".tedImage").setAttribute("alt", `Photo de l'ourson : ${teddyItem.name}`);
   productContainer.querySelector(".tedName").textContent = teddyItem.name;
-  productContainer.querySelector(".tedPrice").textContent = `${teddyItem.price / 100},00 €`;
+  productContainer.querySelector(".tedPrice").textContent = `${teddyItem.price / 100},00€`;
   productContainer.querySelector(".tedDescription").textContent = teddyItem.description;
 
   // render template

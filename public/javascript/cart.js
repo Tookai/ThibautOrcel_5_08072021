@@ -82,7 +82,11 @@ for (let i = 0; i < minus1.length; i++) {
       itemFind.quantite = parseFloat(itemFind.quantite) - 1;
       console.log(i, "index");
     } else if ((itemFind.quantite = 1)) {
-      if (confirm("Êtes vous sûr de vouloir complètement supprimer cet ourson du panier ?")) {
+      if (
+        confirm(
+          `Êtes vous sûr de vouloir complètement supprimer l'ourson : ${items[i].details.nom} de la couleur :  ${color} de votre panier ?`
+        )
+      ) {
         items.splice(i, 1);
       }
     }
