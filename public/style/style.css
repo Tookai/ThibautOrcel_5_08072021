@@ -247,6 +247,30 @@ legend {
   outline: none;
 }
 
+.minus1-btn {
+  width: 40%;
+  padding: 1rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: rgb(150, 32, 32);
+  color: white;
+}
+
+.plus1-btn {
+  width: 40%;
+  padding: 1rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: rgb(34, 102, 38);
+  color: white;
+}
+
 /* *************************************** */
 
 .pad-03rem {

@@ -3,28 +3,13 @@ if (getCart().length === 0) {
   document.getElementById("clear").classList.add("hide");
 } else {
   window.onload = () => {
-/*     stackItemsInCart(); */
-    teddiesInCart();
+    showTeddiesInCart();
     totalCartPrice();
     totalCartItems();
   };
 }
 
-console.log(getCart());
-
-/* let data = getCart();
-console.log(data);
-
-stackItemsInCart = () => {
-  data = Array.from(
-    data.reduce((acc, { id, quantite }) => acc.set(id, (acc.get(id) || 0) + parseFloat(quantite)), new Map()),
-    ([id, quantite]) => ({ id, quantite })
-  );
-
-  console.log(data, "stacked cart");
-}; */
-
-teddiesInCart = () => {
+showTeddiesInCart = () => {
   getCart().map((teddyItem) => {
     //
     // get & clone template
@@ -32,7 +17,7 @@ teddiesInCart = () => {
     const productContainer = document.importNode(template.content, true);
 
     // fill template
-    productContainer.querySelector(".tedItem").setAttribute("id", teddyItem.id);
+    productContainer.querySelector(".tedItem").setAttribute("id", `${teddyItem.id}${teddyItem.couleur}`);
     productContainer.querySelector(".tedImage").setAttribute("src", teddyItem.details.img);
     productContainer.querySelector(".tedImage").setAttribute("alt", `Photo de l'ourson : ${teddyItem.details.nom}`);
     productContainer.querySelector(".tedName").textContent = teddyItem.details.nom;

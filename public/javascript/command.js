@@ -10,12 +10,12 @@ const getCart = () => {
 };
 
 window.onload = () => {
-  showCommand();
+  showTeddiesInCommand();
   totalCartPrice();
   totalCartItems();
 };
 
-showCommand = () => {
+showTeddiesInCommand = () => {
   getCart().map((teddyItem) => {
     //
     // get & clone template
@@ -23,13 +23,11 @@ showCommand = () => {
     const productContainer = document.importNode(template.content, true);
 
     // fill template
-    productContainer.querySelector(".tedItem").setAttribute("id", teddyItem.details.id);
+    productContainer.querySelector(".tedItem").setAttribute("id", `${teddyItem.details.id}${teddyItem.couleur}`);
     productContainer.querySelector(".tedName").textContent = teddyItem.details.nom;
     productContainer.querySelector(".tedPrice").textContent = teddyItem.details.prix;
     productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;
-    productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;
     productContainer.querySelector(".tedQuantity").textContent = teddyItem.quantite;
-    productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;
     productContainer.querySelector(".tedTotal").textContent = `${parseFloat(teddyItem.details.prix) * parseFloat(teddyItem.quantite)},00€`;
 
     // render template
