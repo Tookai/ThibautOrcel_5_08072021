@@ -84,8 +84,6 @@ document.getElementById("addToCart").onclick = () => {
     },
   };
 
-  console.log(item);
-
   alert(`Vous allez ajouter la peluche ${nom} à votre panier.`);
 
   // add cart to local storage
@@ -95,7 +93,6 @@ document.getElementById("addToCart").onclick = () => {
   })();
 
   const itemFind = items.find((e) => e.id === item.id && e.couleur === item.couleur);
-  console.log(itemFind, "item find");
 
   if (itemFind) {
     itemFind.quantite = parseFloat(itemFind.quantite) + parseFloat(quantite);

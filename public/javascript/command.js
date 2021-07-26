@@ -1,4 +1,4 @@
-const orderId = new URL(location.href).searchParams.get("orderId") || "ERREUR";
+const orderId = new URL(location.href).searchParams.get("orderId");
 document.getElementById("commandId").textContent = orderId;
 
 const getContactInfos = () => {
@@ -21,9 +21,10 @@ showTeddiesInCommand = () => {
     // get & clone template
     const template = document.querySelector("template#command-item");
     const productContainer = document.importNode(template.content, true);
+    const colorNoSpace = teddyItem.couleur.replace(/ /g, "");
 
     // fill template
-    productContainer.querySelector(".tedItem").setAttribute("id", `${teddyItem.details.id}${teddyItem.couleur}`);
+    productContainer.querySelector(".tedItem").setAttribute("id", `${teddyItem.details.id}${colorNoSpace}`);
     productContainer.querySelector(".tedName").textContent = teddyItem.details.nom;
     productContainer.querySelector(".tedPrice").textContent = teddyItem.details.prix;
     productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;

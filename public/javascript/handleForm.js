@@ -144,7 +144,6 @@ if (getCart().length === 0) {
         fetch("http://localhost:3000/api/teddies/order", sendOrder)
           .then((response) => response.json())
           .then((json) => {
-            console.log(json.orderId);
             window.location.href = `command.html?orderId=${json.orderId}`;
           })
           .catch((error) => {
@@ -160,7 +159,7 @@ if (getCart().length === 0) {
         contact_infos.push(contact);
         localStorage.setItem("contact", JSON.stringify(contact_infos));
       } else {
-        alert(`Veuillez bien vérifier que les champs du formulaire soient remplis correctement.`);
+        alert(`Veuillez vérifier que les champs du formulaire soient remplis correctement.`);
       }
     });
   });
