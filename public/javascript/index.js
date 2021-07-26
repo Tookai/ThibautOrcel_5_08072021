@@ -46,3 +46,8 @@ if (getCart().length === 0) {
 } else {
   document.getElementById("cartImg").src = "../images/cartfull.png";
 }
+
+if (localStorage.contact !== undefined) {
+  window.localStorage.clear();
+  window.location.reload();
+}
