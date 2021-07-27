@@ -14,7 +14,9 @@ showTeddiesInCart = () => {
     productContainer.querySelector(".tedPrice").textContent = teddyItem.details.prix;
     productContainer.querySelector(".tedColor").textContent = teddyItem.couleur;
     productContainer.querySelector(".tedQuantity").textContent = teddyItem.quantite;
+    productContainer.querySelector(".tedQuantity").setAttribute("id", `quantity-${teddyItem.id}${colorNoSpace}`);
     productContainer.querySelector(".tedTotal").textContent = `${parseFloat(teddyItem.details.prix) * parseFloat(teddyItem.quantite)},00€`;
+    productContainer.querySelector(".tedTotal").setAttribute("id", `total-${teddyItem.id}${colorNoSpace}`);
 
     // render template
     document.getElementById("cart").appendChild(productContainer);
@@ -65,7 +67,7 @@ document.getElementById("clear").onclick = () => {
 
 //
 // Remove 1 from cart
-const minus1 = document.querySelectorAll("button.minus1-btn");
+/* const minus1 = document.querySelectorAll("button.minus1-btn");
 for (let i = 0; i < minus1.length; i++) {
   let minus1_btn = minus1[i];
   minus1_btn.addEventListener("click", () => {
@@ -91,7 +93,9 @@ for (let i = 0; i < minus1.length; i++) {
     localStorage.setItem("cart", JSON.stringify(items));
     window.location.reload();
   });
-}
+} */
+
+// `quantity-${teddyItem.id}${colorNoSpace}`
 
 //
 // Add 1 in cart
@@ -99,19 +103,57 @@ const plus1 = document.querySelectorAll("button.plus1-btn");
 for (let i = 0; i < plus1.length; i++) {
   let plus1_btn = plus1[i];
   plus1_btn.addEventListener("click", () => {
-    const items = (() => {
-      const fieldValue = localStorage.getItem("cart");
-      return fieldValue === null ? [] : JSON.parse(fieldValue);
-    })();
+    const products = getCart();
+    const product = products[i];
+    const id = product.id;
+    const color = product.couleur;
+    const colorNoSpace = product.couleur.replace(/ /g, "");
+    const quantity = document.querySelector(`#quantity-${id}${colorNoSpace}`);
+    const total = document.querySelector(`#total-${id}${colorNoSpace}`);
+    quantity.innerText = parseFloat(product.quantite) + 1;
+    total.innerText = `${(parseFloat(product.quantite) + 1) * parseFloat(product.details.prix)},00€`;
 
-    const id = items[i].id;
-    const color = items[i].couleur;
+    for (const product of products) {
+      if (product.id === id && product.couleur === color) {
+        product.quantite ++;
+      }
+    }
+    localStorage.setItem("cart", JSON.stringify(products));
+    totalCartPrice();
+    totalCartItems();
+  });
+}
 
-    const itemFind = items.find((e) => e.id === id && e.couleur === color);
+const minus1 = document.querySelectorAll("button.minus1-btn");
+for (let i = 0; i < minus1.length; i++) {
+  let minus1_btn = minus1[i];
+  minus1_btn.addEventListener("click", () => {
+    const products = getCart();
+    const product = products[i];
+    const id = product.id;
+    const name = product.nom;
+    const color = product.couleur;
+    const colorNoSpace = product.couleur.replace(/ /g, "");
+    const quantity = document.querySelector(`#quantity-${id}${colorNoSpace}`);
+    const total = document.querySelector(`#total-${id}${colorNoSpace}`);
 
-    itemFind.quantite = parseFloat(itemFind.quantite) + 1;
+    if (product.quantite > 1) {
+      quantity.innerText = parseFloat(product.quantite) - 1;
+      total.innerText = `${(parseFloat(product.quantite) - 1) * parseFloat(product.details.prix)},00€`;
+    } else if ((product.quantite = 1)) {
+      if (confirm(`Êtes vous sûr de vouloir complètement supprimer l'ourson : ${name} de la couleur : ${color} de votre panier ?`)) {
+        products.splice(i, 1);
+        window.location.reload();
+      }
+    }
 
-    localStorage.setItem("cart", JSON.stringify(items));
-    window.location.reload();
+    for (const product of products) {
+      if (product.id === id && product.couleur === color) {
+        product.quantite --;
+      }
+    }
+    localStorage.setItem("cart", JSON.stringify(products));
+    totalCartPrice();
+    totalCartItems();
   });
 }
