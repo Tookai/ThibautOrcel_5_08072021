@@ -15,43 +15,44 @@ if (getCart().length === 0) {
   });
 } else {
   window.addEventListener("DOMContentLoaded", () => {
-    //
-    // Get form Input
+    //!
+    //! Get form Input
     const firstNameInput = form.querySelector("input[id=firstName]");
     const lastNameInput = form.querySelector("input[id=lastName]");
     const addressInput = form.querySelector("input[id=address]");
     const cityInput = form.querySelector("input[id=city]");
     const emailInput = form.querySelector("input[id=email]");
-    //
-    // Regular Expressions & Testing
+    //!
+    //! Regular Expressions & Testing
     const text_regex = /^[A-Za-z]{2,60}/;
     const address_regex = /^[A-Za-z -,0-9]{5,}/;
     const email_regex =
       /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-    //
-    //
+    
+    //*
+    //*
     const isValidText = (value) => {
       return text_regex.test(value);
     };
-    //
+    //*
     const isValidAddress = (address) => {
       return address_regex.test(address);
     };
-    //
+    //*
     const isValidEmail = (email) => {
       return email_regex.test(email);
     };
 
-    //
-    // Validation
+    //*
+    //* Validation
     firstNameInput.addEventListener("submit", isValidText);
     lastNameInput.addEventListener("submit", isValidText);
     addressInput.addEventListener("submit", isValidAddress);
     cityInput.addEventListener("submit", isValidText);
     emailInput.addEventListener("submit", isValidEmail);
 
-    //
-    // Get contact infos on Submit
+    //!
+    //! Get contact infos on Submit
     form.addEventListener("submit", () => {
       const firstName = firstNameInput.value;
       const lastName = lastNameInput.value;
@@ -94,8 +95,8 @@ if (getCart().length === 0) {
         },
       ];
 
-      //
-      // display form validity
+      //*
+      //* display form validity
       function validateField(func, value, input) {
         if (func(value)) {
           input.classList.add("valid");
@@ -105,7 +106,7 @@ if (getCart().length === 0) {
           input.classList.remove("valid");
         }
       }
-      //
+      //*
       function validateForm() {
         for (const data of formValidationData) {
           validateField(data.func, data.value, data.input);
@@ -114,8 +115,8 @@ if (getCart().length === 0) {
 
       validateForm();
 
-      //
-      //
+      //*
+      //*
       const validations = [isValidText(firstName), isValidText(lastName), isValidAddress(address), isValidText(city), isValidEmail(email)];
       const isFormValid = validations.every((isValid) => isValid);
 
@@ -141,8 +142,8 @@ if (getCart().length === 0) {
             throw error;
           });
 
-        //
-        // add contact infos to local storage
+        //*
+        //* add contact infos to local storage
         const setContactInfos = (() => {
           const fieldValue = localStorage.getItem("contact");
           return fieldValue === null ? [] : JSON.parse(fieldValue);

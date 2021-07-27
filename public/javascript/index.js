@@ -18,12 +18,12 @@ window.onload = () => {
 
 showTeddiesData = (teddiesData) => {
   teddiesData.map((teddyItem) => {
-    //
-    // get & clone template
+    //?
+    //? get & clone template
     const template = document.querySelector("template#index-item");
     const productContainer = document.importNode(template.content, true);
 
-    // fill template
+    //? fill template
     productContainer.querySelector(".tedItem").setAttribute("id", teddyItem._id);
     productContainer.querySelector(".tedImage").setAttribute("src", teddyItem.imageUrl);
     productContainer.querySelector(".tedImage").setAttribute("alt", `Photo de l'ourson : ${teddyItem.name}`);
@@ -32,7 +32,7 @@ showTeddiesData = (teddiesData) => {
     productContainer.querySelector(".tedDescription").textContent = teddyItem.description;
     productContainer.querySelector(".tedRedirect").setAttribute("href", `item.html?id=${teddyItem._id}`);
 
-    // render template
+    //? render template
     document.getElementById("products").appendChild(productContainer);
   });
 };

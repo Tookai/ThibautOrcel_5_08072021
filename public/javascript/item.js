@@ -27,12 +27,12 @@ window.onload = () => {
 };
 
 showTeddyData = (teddyItem) => {
-  //
-  // get & clone template
+  //?
+  //? get & clone template
   const template = document.querySelector("template#single-item");
   const productContainer = document.importNode(template.content, true);
 
-  // fill template
+  //? fill template
   productContainer.querySelector(".tedItem").setAttribute("id", teddyItem._id);
   productContainer.querySelector(".tedImage").setAttribute("src", teddyItem.imageUrl);
   productContainer.querySelector(".tedImage").setAttribute("alt", `Photo de l'ourson : ${teddyItem.name}`);
@@ -40,7 +40,7 @@ showTeddyData = (teddyItem) => {
   productContainer.querySelector(".tedPrice").textContent = `${teddyItem.price / 100},00€`;
   productContainer.querySelector(".tedDescription").textContent = teddyItem.description;
 
-  // render template
+  //? render template
   document.getElementById("products").appendChild(productContainer);
 };
 
@@ -50,23 +50,23 @@ updateTitle = (teddyItem) => {
 
 showColorOptions = (teddyItem) => {
   teddyItem.colors.map((color) => {
-    //
-    // get & clone template
+    //?
+    //? get & clone template
     const template = document.querySelector("template#color-template");
     const optionsContainer = document.importNode(template.content, true);
 
-    // fill template
+    //? fill template
     optionsContainer.querySelector(".color-options").setAttribute("value", color);
     optionsContainer.querySelector(".color-options").textContent = color;
 
-    // render template
+    //? render template
     document.getElementById("colors").appendChild(optionsContainer);
   });
 };
 
 document.getElementById("addToCart").onclick = () => {
-  //
-  // Create the item Object
+  //!
+  //! Create the item Object
   const id = teddyID;
   const couleur = document.querySelector("select#colors").value;
   const quantite = document.querySelector("select#quantity").value;
@@ -86,13 +86,10 @@ document.getElementById("addToCart").onclick = () => {
 
   alert(`Vous allez ajouter la peluche ${nom} à votre panier.`);
 
-  // add cart to local storage
-  const items = (() => {
-    const fieldValue = localStorage.getItem("cart");
-    return fieldValue === null ? [] : JSON.parse(fieldValue);
-  })();
-  
-  // check if there's an item with the same id and same color already in cart
+  //* add cart to local storage
+  const items = getCart();
+
+  //! check if there's an item with the same id and same color already in cart
   const itemFind = items.find((e) => e.id === item.id && e.couleur === item.couleur);
 
   if (itemFind) {
