@@ -83,3 +83,9 @@ goBackBtn.addEventListener("click", (e) => {
   localStorage.clear();
   window.location.href = `index.html`;
 });
+
+//
+// Clear local storage in case of closed tab or history back btn
+window.addEventListener("beforeunload", () => {
+  localStorage.clear();
+});

@@ -91,7 +91,8 @@ document.getElementById("addToCart").onclick = () => {
     const fieldValue = localStorage.getItem("cart");
     return fieldValue === null ? [] : JSON.parse(fieldValue);
   })();
-
+  
+  // check if there's an item with the same id and same color already in cart
   const itemFind = items.find((e) => e.id === item.id && e.couleur === item.couleur);
 
   if (itemFind) {

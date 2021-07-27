@@ -30,39 +30,29 @@ if (getCart().length === 0) {
       /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     //
     //
-    const isValidFirstName = (firstName) => {
-      return text_regex.test(firstName);
-    };
-
-    //
-    const isValidLastName = (lastName) => {
-      return text_regex.test(lastName);
+    const isValidText = (value) => {
+      return text_regex.test(value);
     };
     //
     const isValidAddress = (address) => {
       return address_regex.test(address);
     };
     //
-    const isValidCity = (city) => {
-      return text_regex.test(city);
-    };
-    //
     const isValidEmail = (email) => {
       return email_regex.test(email);
     };
+
     //
     // Validation
-    firstNameInput.addEventListener("submit", isValidFirstName);
-    lastNameInput.addEventListener("submit", isValidLastName);
+    firstNameInput.addEventListener("submit", isValidText);
+    lastNameInput.addEventListener("submit", isValidText);
     addressInput.addEventListener("submit", isValidAddress);
-    cityInput.addEventListener("submit", isValidCity);
+    cityInput.addEventListener("submit", isValidText);
     emailInput.addEventListener("submit", isValidEmail);
 
     //
     // Get contact infos on Submit
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
+    form.addEventListener("submit", () => {
       const firstName = firstNameInput.value;
       const lastName = lastNameInput.value;
       const address = addressInput.value;
@@ -76,72 +66,72 @@ if (getCart().length === 0) {
         email,
       };
 
-      const validations = [
-        isValidFirstName(firstName),
-        isValidLastName(lastName),
-        isValidAddress(address),
-        isValidCity(city),
-        isValidEmail(email),
+      const formValidationData = [
+        {
+          func: isValidText,
+          value: firstName,
+          input: firstNameInput,
+        },
+        {
+          func: isValidText,
+          value: lastName,
+          input: lastNameInput,
+        },
+        {
+          func: isValidAddress,
+          value: address,
+          input: addressInput,
+        },
+        {
+          func: isValidText,
+          value: city,
+          input: cityInput,
+        },
+        {
+          func: isValidEmail,
+          value: email,
+          input: emailInput,
+        },
       ];
 
+      //
+      // display form validity
+      function validateField(func, value, input) {
+        if (func(value)) {
+          input.classList.add("valid");
+          input.classList.remove("invalid");
+        } else {
+          input.classList.add("invalid");
+          input.classList.remove("valid");
+        }
+      }
+      //
+      function validateForm() {
+        for (const data of formValidationData) {
+          validateField(data.func, data.value, data.input);
+        }
+      }
+
+      validateForm();
+
+      //
+      //
+      const validations = [isValidText(firstName), isValidText(lastName), isValidAddress(address), isValidText(city), isValidEmail(email)];
       const isFormValid = validations.every((isValid) => isValid);
 
-      //
-      // Display Validation Style
-      if (isValidFirstName(firstName)) {
-        firstNameInput.classList.add("valid");
-        firstNameInput.classList.remove("invalid");
-      } else {
-        firstNameInput.classList.add("invalid");
-        firstNameInput.classList.remove("valid");
-      }
-
-      if (isValidLastName(lastName)) {
-        lastNameInput.classList.add("valid");
-        lastNameInput.classList.remove("invalid");
-      } else {
-        lastNameInput.classList.add("invalid");
-        lastNameInput.classList.remove("valid");
-      }
-
-      if (isValidAddress(address)) {
-        addressInput.classList.add("valid");
-        addressInput.classList.remove("invalid");
-      } else {
-        addressInput.classList.add("invalid");
-        addressInput.classList.remove("valid");
-      }
-
-      if (isValidCity(city)) {
-        cityInput.classList.add("valid");
-        cityInput.classList.remove("invalid");
-      } else {
-        cityInput.classList.add("invalid");
-        cityInput.classList.remove("valid");
-      }
-
-      if (isValidEmail(email)) {
-        emailInput.classList.add("valid");
-        emailInput.classList.remove("invalid");
-      } else {
-        emailInput.classList.add("invalid");
-        emailInput.classList.remove("valid");
-      }
-      //
-      //
       if (isFormValid) {
         const order = {
           contact,
           products: cartId,
         };
 
-        const sendOrder = {
+        const orderOptions = {
           method: "POST",
           body: JSON.stringify(order),
           headers: { "Content-Type": "application/json" },
         };
 
-        fetch("http://localhost:3000/api/teddies/order", sendOrder)
+        fetch("http://localhost:3000/api/teddies/order", orderOptions)
           .then((response) => response.json())
           .then((json) => {
             window.location.href = `command.html?orderId=${json.orderId}`;
@@ -151,13 +141,14 @@ if (getCart().length === 0) {
             throw error;
           });
 
+        //
         // add contact infos to local storage
-        const contact_infos = (() => {
+        const setContactInfos = (() => {
           const fieldValue = localStorage.getItem("contact");
           return fieldValue === null ? [] : JSON.parse(fieldValue);
         })();
-        contact_infos.push(contact);
-        localStorage.setItem("contact", JSON.stringify(contact_infos));
+        setContactInfos.push(contact);
+        localStorage.setItem("contact", JSON.stringify(setContactInfos));
       } else {
         alert(`Veuillez vérifier que les champs du formulaire soient remplis correctement.`);
       }
