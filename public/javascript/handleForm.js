@@ -43,14 +43,6 @@ if (getCart().length === 0) {
       return email_regex.test(email);
     };
 
-    //*
-    //* Validation
-    firstNameInput.addEventListener("submit", isValidText);
-    lastNameInput.addEventListener("submit", isValidText);
-    addressInput.addEventListener("submit", isValidAddress);
-    cityInput.addEventListener("submit", isValidText);
-    emailInput.addEventListener("submit", isValidEmail);
-
     //!
     //! Get contact infos on Submit
     form.addEventListener("submit", (e) => {
@@ -98,7 +90,7 @@ if (getCart().length === 0) {
 
       //*
       //* display form validity
-      function validateField(func, value, input) {
+      function toggleValidationClass(func, value, input) {
         if (func(value)) {
           input.classList.add("valid");
           input.classList.remove("invalid");
@@ -108,13 +100,8 @@ if (getCart().length === 0) {
         }
       }
       //*
-      function validateForm() {
-        for (const data of formValidationData) {
-          validateField(data.func, data.value, data.input);
-        }
-      }
+      formValidationData.forEach((data) => toggleValidationClass(data.func, data.value, data.input));
 
-      validateForm();
 
       //*
       //*
