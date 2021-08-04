@@ -13,6 +13,7 @@ window.onload = () => {
   showTeddiesInCommand();
   totalCartPrice();
   totalCartItems();
+  showContactInCommand();
 };
 
 showTeddiesInCommand = () => {
@@ -60,26 +61,28 @@ totalCartPrice = () => {
 
 //
 //
-getContactInfos().map((contact) => {
-  //
-  // get & clone template
-  const template = document.querySelector("template#contact-infos");
-  const productContainer = document.importNode(template.content, true);
+showContactInCommand = () => {
+  getContactInfos().map((contact) => {
+    //
+    // get & clone template
+    const template = document.querySelector("template#contact-infos");
+    const productContainer = document.importNode(template.content, true);
 
-  // fill template
-  productContainer.querySelector("#name").textContent = `${contact.firstName} ${contact.lastName}`;
-  productContainer.querySelector("#address").textContent = contact.address;
-  productContainer.querySelector("#city").textContent = contact.city;
-  productContainer.querySelector("#email").textContent = contact.email;
+    // fill template
+    productContainer.querySelector("#name").textContent = `${contact.firstName} ${contact.lastName}`;
+    productContainer.querySelector("#address").textContent = contact.address;
+    productContainer.querySelector("#city").textContent = contact.city;
+    productContainer.querySelector("#email").textContent = contact.email;
 
-  // render template
-  document.getElementById("contact").appendChild(productContainer);
-});
+    // render template
+    document.getElementById("contact").appendChild(productContainer);
+  });
+};
 
 //
 // BACK TO START BUTTON QUI CLEAR LE LOCAL STORAGE
 const goBackBtn = document.querySelector("button#backToStart");
-goBackBtn.addEventListener("click", (e) => {
+goBackBtn.addEventListener("click", () => {
   localStorage.clear();
   window.location.href = `index.html`;
 });

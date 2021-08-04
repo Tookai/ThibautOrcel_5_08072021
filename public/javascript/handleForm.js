@@ -28,7 +28,7 @@ if (getCart().length === 0) {
     const address_regex = /^[A-Za-z -,0-9]{5,}/;
     const email_regex =
       /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-    
+
     //*
     //*
     const isValidText = (value) => {
@@ -53,7 +53,8 @@ if (getCart().length === 0) {
 
     //!
     //! Get contact infos on Submit
-    form.addEventListener("submit", () => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
       const firstName = firstNameInput.value;
       const lastName = lastNameInput.value;
       const address = addressInput.value;
