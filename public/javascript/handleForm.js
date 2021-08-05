@@ -2,6 +2,10 @@ const getCart = () => {
   return JSON.parse(localStorage.getItem("cart")) || [];
 };
 
+const setContactInfos = () => {
+  return JSON.parse(localStorage.getItem("contact")) || [];
+};
+
 const cartId = getCart().map((item) => {
   return item.id;
 });
@@ -132,12 +136,9 @@ if (getCart().length === 0) {
 
         //*
         //* add contact infos to local storage
-        const setContactInfos = (() => {
-          const fieldValue = localStorage.getItem("contact");
-          return fieldValue === null ? [] : JSON.parse(fieldValue);
-        })();
-        setContactInfos.push(contact);
-        localStorage.setItem("contact", JSON.stringify(setContactInfos));
+        const contactInfos = setContactInfos()
+        contactInfos.push(contact);
+        localStorage.setItem("contact", JSON.stringify(contactInfos));
       } else {
         alert(`Veuillez vérifier que les champs du formulaire soient remplis correctement.`);
       }
