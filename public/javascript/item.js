@@ -4,6 +4,7 @@ const getCart = () => {
   return JSON.parse(localStorage.getItem("cart")) || [];
 };
 
+// TEST
 const getTeddyData = () => {
   return fetch(`http://localhost:3000/api/teddies/${teddyID}`)
     .then((response) => {
@@ -26,6 +27,7 @@ window.onload = () => {
   });
 };
 
+// TEST
 showTeddyData = (teddyItem) => {
   //?
   //? get & clone template
@@ -44,10 +46,12 @@ showTeddyData = (teddyItem) => {
   document.getElementById("products").appendChild(productContainer);
 };
 
+// TEST
 updateTitle = (teddyItem) => {
   document.title = `Orinourson - ${teddyItem.name}`;
 };
 
+// TEST
 showColorOptions = (teddyItem) => {
   teddyItem.colors.map((color) => {
     //?
@@ -64,6 +68,7 @@ showColorOptions = (teddyItem) => {
   });
 };
 
+// TEST
 document.getElementById("addToCart").onclick = () => {
   //!
   //! Create the item Object

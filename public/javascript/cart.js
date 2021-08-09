@@ -1,3 +1,4 @@
+// TEST
 showTeddiesInCart = () => {
   getCart().map((teddyItem) => {
     //?
@@ -36,6 +37,7 @@ if (getCart().length === 0) {
 
 //*
 //*
+// TEST
 totalCartItems = () => {
   const items = getCart().map((teddyItem) => {
     return parseFloat(teddyItem.quantite);
@@ -47,6 +49,7 @@ totalCartItems = () => {
 
 //*
 //*
+// TEST
 totalCartPrice = () => {
   const price = getCart().map((teddyItem) => {
     return parseFloat(teddyItem.details.prix) * parseFloat(teddyItem.quantite);
@@ -58,6 +61,7 @@ totalCartPrice = () => {
 
 //*
 //* Clear localStorage
+// TEST
 document.getElementById("clear").onclick = () => {
   if (confirm("Êtes vous sûr de vouloir vider entièrement votre panier ?")) {
     window.localStorage.clear();
@@ -67,6 +71,7 @@ document.getElementById("clear").onclick = () => {
 
 //*
 //* Add 1 in cart
+// TEST
 const plus1 = document.querySelectorAll("button.plus1-btn");
 for (let i = 0; i < plus1.length; i++) {
   let plus1_btn = plus1[i];
@@ -94,6 +99,7 @@ for (let i = 0; i < plus1.length; i++) {
 
 //*
 //* Remove 1 from cart
+// TEST
 const minus1 = document.querySelectorAll("button.minus1-btn");
 for (let i = 0; i < minus1.length; i++) {
   let minus1_btn = minus1[i];

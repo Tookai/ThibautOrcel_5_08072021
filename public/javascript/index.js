@@ -1,3 +1,4 @@
+// TEST
 const getTeddiesData = () => {
   return fetch("http://localhost:3000/api/teddies")
     .then((response) => {
@@ -16,6 +17,7 @@ window.onload = () => {
   initialTeddies.then((data) => showTeddiesData(data));
 };
 
+// TEST
 showTeddiesData = (teddiesData) => {
   teddiesData.map((teddyItem) => {
     //?

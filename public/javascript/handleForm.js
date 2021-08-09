@@ -35,14 +35,17 @@ if (getCart().length === 0) {
 
     //*
     //*
+    // TEST
     const isValidText = (value) => {
       return text_regex.test(value);
     };
     //*
+    // TEST
     const isValidAddress = (address) => {
       return address_regex.test(address);
     };
     //*
+    // TEST
     const isValidEmail = (email) => {
       return email_regex.test(email);
     };
@@ -94,6 +97,7 @@ if (getCart().length === 0) {
 
       //*
       //* display form validity
+      // TEST
       function toggleValidationClass(func, value, input) {
         if (func(value)) {
           input.classList.add("valid");
@@ -110,6 +114,7 @@ if (getCart().length === 0) {
       //*
       //*
       const validations = [isValidText(firstName), isValidText(lastName), isValidAddress(address), isValidText(city), isValidEmail(email)];
+      // TEST
       const isFormValid = validations.every((isValid) => isValid);
 
       if (isFormValid) {
@@ -124,6 +129,7 @@ if (getCart().length === 0) {
           headers: { "Content-Type": "application/json" },
         };
 
+        // TEST
         fetch("http://localhost:3000/api/teddies/order", orderOptions)
           .then((response) => response.json())
           .then((json) => {
@@ -136,6 +142,7 @@ if (getCart().length === 0) {
 
         //*
         //* add contact infos to local storage
+        // TEST
         const contactInfos = setContactInfos()
         contactInfos.push(contact);
         localStorage.setItem("contact", JSON.stringify(contactInfos));

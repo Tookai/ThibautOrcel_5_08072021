@@ -16,6 +16,7 @@ window.onload = () => {
   showContactInCommand();
 };
 
+// TEST
 showTeddiesInCommand = () => {
   getCart().map((teddyItem) => {
     //
@@ -61,6 +62,7 @@ totalCartPrice = () => {
 
 //
 //
+// TEST
 showContactInCommand = () => {
   getContactInfos().map((contact) => {
     //
@@ -81,6 +83,7 @@ showContactInCommand = () => {
 
 //
 // BACK TO START BUTTON QUI CLEAR LE LOCAL STORAGE
+// TEST
 const goBackBtn = document.querySelector("button#backToStart");
 goBackBtn.addEventListener("click", () => {
   localStorage.clear();
@@ -89,6 +92,7 @@ goBackBtn.addEventListener("click", () => {
 
 //
 // Clear local storage in case of closed tab or history back btn
+// TEST
 window.addEventListener("beforeunload", () => {
   localStorage.clear();
 });
