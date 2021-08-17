@@ -107,12 +107,11 @@ for (let i = 0; i < minus1.length; i++) {
     const products = getCart();
     const product = products[i];
     const id = product.id;
-    const name = product.nom;
+    const name = product.details.nom;
     const color = product.couleur;
     const colorNoSpace = product.couleur.replace(/ /g, "");
     const quantity = document.querySelector(`#quantity-${id}${colorNoSpace}`);
     const total = document.querySelector(`#total-${id}${colorNoSpace}`);
-
     if (product.quantite > 1) {
       quantity.innerText = parseFloat(product.quantite) - 1;
       total.innerText = `${(parseFloat(product.quantite) - 1) * parseFloat(product.details.prix)},00€`;
