@@ -7,4 +7,4 @@ server runs on another port for any reason, this is printed to the
 console when the server starts, e.g. `Listening on port 3001`.
 
 
-Orinoco - Projet 5 - OpenClassrooms : Web Developper
+Orinoco - Projet 5 - OpenClassrooms : Web Developer
